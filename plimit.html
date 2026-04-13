@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLimit — Process Priority Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { --lb-rgb: 255,159,10; }
+    /* Orange accent overrides for this page */
+    .section-label { color: #ff9f0a; }
+    .feat-card { border-color: rgba(255,159,10,.1); }
+    .feat-card:hover { border-color: rgba(255,159,10,.4); }
+    .feat-title { color: #ff9f0a; }
+    .feat-list li::before { color: #ff9f0a; }
+    .short-row:hover { border-color: rgba(255,159,10,.18); }
+    kbd { background: rgba(255,159,10,.08); border-color: rgba(255,159,10,.3); color: #ff9f0a; }
+    .div { background: linear-gradient(90deg,transparent,rgba(255,159,10,.25),transparent); }
+    /* Logo header */
+    .pl-logo-row { text-align: center; padding: 0 0 2rem; }
+    .pl-hero-logo { height: 80px; object-fit: contain; filter: drop-shadow(0 0 28px #ff9f0a) drop-shadow(0 0 8px #ff9f0a); }
+    .pl-shot-wrap { max-width: 1200px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div class="wrapper">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">x<span>_</span>coding</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ciare.html">CIARE</a></li>
+      <li><a href="xterminal.html" class="green-link">xTerminal</a></li>
+      <li><a href="pwm.html" class="pink-link">PwM</a></li>
+      <li><a href="plimit.html" class="active orange-link">PLimit</a></li>
+      <li><a href="https://github.com/0x78654C/PLimit" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="product-hero">
+    <div class="hero-glow orange"></div>
+    <div class="product-hero-content">
+      <div class="hero-label orange">// PROCESS PRIORITY MANAGER</div>
+      <div class="hero-name orange">PLimit</div>
+      <div class="hero-sub" style="color:#ff9f0a;opacity:.6;">CPU Priority · Affinity · EcoQoS · .NET 8 · Windows 10+</div>
+      <p class="hero-desc">
+        Take full control of how Windows allocates CPU time, I/O bandwidth, and power
+        to any running process. Set priorities, pin processes to specific cores, enable
+        Efficiency Mode to reduce heat and power, and save your tuning as a persistent
+        JSON profile that loads automatically on startup.
+      </p>
+      <div class="btn-group">
+        <a href="https://github.com/0x78654C/PLimit" target="_blank" class="btn orange">GitHub →</a>
+        <a href="#features" class="btn ghost orange">Explore Features ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar orange fade">
+    <div class="stat-item"><span class="s-num orange">6</span><span class="s-lbl">CPU Priority Levels</span></div>
+    <div class="stat-item"><span class="s-num orange">4</span><span class="s-lbl">I/O Priority Levels</span></div>
+    <div class="stat-item"><span class="s-num orange">Real-Time</span><span class="s-lbl">CPU/RAM Monitor</span></div>
+    <div class="stat-item"><span class="s-num orange">EcoQoS</span><span class="s-lbl">Efficiency Mode</span></div>
+    <div class="stat-item"><span class="s-num orange">JSON</span><span class="s-lbl">Persistent Settings</span></div>
+    <div class="stat-item"><span class="s-num orange">Win 10+</span><span class="s-lbl">Compatible</span></div>
+  </div>
+
+  <!-- SCREENSHOT -->
+  <div class="section fade" id="features">
+    <div class="section-header">
+      <div class="section-label">// INTERFACE</div>
+      <h2 class="section-title">Dark HUD, Real-Time Control</h2>
+      <p class="section-sub">A clean dark-themed control panel for every running process on your system.</p>
+    </div>
+
+    <!-- Logo header -->
+    <div class="pl-logo-row">
+      <img src="../PLimit/logo1.png" alt="PLimit" class="pl-hero-logo"
+           onerror="this.style.display='none'">
+    </div>
+
+    <!-- Full-width interactive screenshot -->
+    <div class="pl-shot-wrap">
+      <div class="shot o shot-ix"
+           data-img="https://github.com/user-attachments/assets/e80ef7cf-5f1a-4251-9c8f-a9ae34ad6a0b"
+           data-caption="PLimit — Process Priority Manager UI"
+           onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="https://github.com/user-attachments/assets/e80ef7cf-5f1a-4251-9c8f-a9ae34ad6a0b"
+             alt="PLimit UI screenshot"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">PLimit — full process list with CPU / I/O priority controls, affinity, EcoQoS &amp; live CPU/RAM monitor</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lb-overlay" class="lb-overlay" onclick="closeLightbox()">
+    <div class="lb-box" onclick="event.stopPropagation()">
+      <button class="lb-close-btn" onclick="closeLightbox()">✕ CLOSE</button>
+      <img id="lb-img" src="" alt="">
+      <div id="lb-caption" class="lb-caption-bar"></div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- PRIORITY FEATURES -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// CPU &amp; I/O CONTROL</div>
+      <h2 class="section-title">Precision Process Tuning</h2>
+      <p class="section-sub">Six CPU priority levels, four I/O priority levels, and per-core affinity — all per process.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card o fade">
+        <span class="feat-icon">⚡</span>
+        <div class="feat-title">CPU Priority</div>
+        <p class="feat-desc">Set the Windows scheduling priority for any process — from Real Time for latency-critical apps to Idle for background noise.</p>
+        <ul class="feat-list o">
+          <li><strong style="color:#ff9f0a;">Real Time</strong> — maximum, use with care</li>
+          <li><strong style="color:#febc2e;">High</strong> — above most system processes</li>
+          <li><strong style="color:#febc2e;">Above Normal</strong> — slightly elevated</li>
+          <li><strong style="color:#c8c8e8;">Normal</strong> — default Windows priority</li>
+          <li><strong style="color:#6666aa;">Below Normal</strong> — deprioritised</li>
+          <li><strong style="color:#444488;">Idle</strong> — only runs when CPU is free</li>
+        </ul>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">💾</span>
+        <div class="feat-title">I/O Priority</div>
+        <p class="feat-desc">Control disk and network I/O scheduling independently from CPU priority. Keep heavy background I/O from stalling your foreground work.</p>
+        <ul class="feat-list o">
+          <li><strong style="color:#ff9f0a;">High</strong> — prioritised disk access</li>
+          <li><strong style="color:#c8c8e8;">Normal</strong> — default behavior</li>
+          <li><strong style="color:#6666aa;">Low</strong> — throttled background</li>
+          <li><strong style="color:#444488;">Very Low</strong> — minimal, for idle tasks</li>
+        </ul>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🧩</span>
+        <div class="feat-title">CPU Affinity</div>
+        <p class="feat-desc">Pin a process to specific CPU cores. Isolate latency-sensitive apps to dedicated cores, or prevent a rogue process from consuming your entire CPU.</p>
+        <ul class="feat-list o">
+          <li>Per-core checkbox selection</li>
+          <li>At least one core always enabled</li>
+          <li>Works with any number of cores</li>
+        </ul>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🚀</span>
+        <div class="feat-title">CPU Boost</div>
+        <p class="feat-desc">Enable or disable Intel/AMD dynamic CPU frequency boost (Turbo Boost / Precision Boost) on a per-process basis.</p>
+        <ul class="feat-list o">
+          <li>Toggle per process</li>
+          <li>Reduce heat for background tasks</li>
+          <li>Maximize performance for foreground</li>
+        </ul>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🧵</span>
+        <div class="feat-title">Thread Priority Boost</div>
+        <p class="feat-desc">Control the Windows kernel's dynamic thread priority raising after waits. Essential for fine-tuning real-time and latency-sensitive workloads.</p>
+        <ul class="feat-list o">
+          <li>Read current boost state</li>
+          <li>Enable / disable per process</li>
+          <li>Useful for audio/video apps</li>
+        </ul>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🌿</span>
+        <div class="feat-title">Efficiency Mode (EcoQoS)</div>
+        <p class="feat-desc">Toggle Windows 11 Efficiency Mode on any process. Lowers CPU usage, reduces heat, and extends battery life for background applications.</p>
+        <ul class="feat-list o">
+          <li>Uses Windows EcoQoS API</li>
+          <li>Perfect for browser helpers, updaters</li>
+          <li>Reduces power draw without killing the process</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- LIVE DEMO TERMINAL -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// SYSTEM MONITOR</div>
+      <h2 class="section-title">Live CPU &amp; RAM Dashboard</h2>
+      <p class="section-sub">Real-time per-core CPU usage bars and RAM consumption, updated continuously.</p>
+    </div>
+    <div class="term-win orange" style="max-width:850px;margin:0 auto;">
+      <div class="term-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-ttl">PLimit — SYSTEM MONITOR</div>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="t-ps"> </span><span class="t-out o">System Monitor ─────────────────────────────</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">CPU Core 0  ████████████░░░░░░░░  62%</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">CPU Core 1  ██████░░░░░░░░░░░░░░  28%</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">CPU Core 2  ████████████████████  <span class="t-out r">94%</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">CPU Core 3  ███░░░░░░░░░░░░░░░░░  15%</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">CPU Core 4  █████████░░░░░░░░░░░  43%</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">CPU Core 5  ██░░░░░░░░░░░░░░░░░░  11%</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out o">RAM         ████████████░░░░░░░░  11.2 GB / 16 GB</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out o">─────────────────────────────────────────────</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">chrome.exe    PID 4812  CPU: High    IO: Normal   Affinity: 0-5</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">discord.exe   PID 7340  CPU: Idle    IO: Low      EcoQoS: ON</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">game.exe      PID 2201  CPU: AboveN  IO: High     Boost: ON</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out o">Settings saved → Settings/processes.json ✓</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- SETTINGS & PERSISTENCE -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// PERSISTENCE</div>
+      <h2 class="section-title">Profiles That Survive Reboots</h2>
+      <p class="section-sub">Your tuning is remembered. PLimit auto-applies saved settings every time it starts.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card o fade">
+        <span class="feat-icon">💾</span>
+        <div class="feat-title">JSON Settings</div>
+        <p class="feat-desc">All process settings — priority, affinity, boost, efficiency, I/O — are serialized to <code>Settings/processes.json</code> next to the executable.</p>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🔄</span>
+        <div class="feat-title">Auto-Apply on Startup</div>
+        <p class="feat-desc">PLimit reads your saved profile at launch and reapplies all settings to matching processes automatically. Set it once, forget it.</p>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🔍</span>
+        <div class="feat-title">Live Process Search</div>
+        <p class="feat-desc">Search by process name or PID from the real-time process list. Live count display shows how many processes are running.</p>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🔒</span>
+        <div class="feat-title">Admin-Aware</div>
+        <p class="feat-desc">Runs with Administrator privileges to modify system-level process settings. Graceful error handling for permission-denied scenarios.</p>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🖤</span>
+        <div class="feat-title">Dark Immersive UI</div>
+        <p class="feat-desc">Modern dark-themed WinForms UI with immersive dark title bar (Windows 10 1903+ / Windows 11) and DoubleBuffered ListView for smooth rendering.</p>
+      </div>
+      <div class="feat-card o fade">
+        <span class="feat-icon">🔁</span>
+        <div class="feat-title">Single Instance</div>
+        <p class="feat-desc">Mutex-protected single instance prevents duplicate PLimit windows from competing with each other's settings writes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- TECH STACK -->
+  <div class="section fade" style="text-align:center;">
+    <div class="section-header">
+      <div class="section-label">// TECH STACK</div>
+      <h2 class="section-title">Built On</h2>
+    </div>
+    <div class="tech-cloud">
+      <span class="tech-badge">.NET 8</span>
+      <span class="tech-badge">Windows Forms</span>
+      <span class="tech-badge">P/Invoke (kernel32 / ntdll / advapi32)</span>
+      <span class="tech-badge">EcoQoS API</span>
+      <span class="tech-badge">BackgroundWorker</span>
+      <span class="tech-badge">System.Text.Json</span>
+      <span class="tech-badge">Windows 10.0+</span>
+      <span class="tech-badge">x64 / AnyCPU</span>
+      <span class="tech-badge">MIT License</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section-full fade" style="text-align:center;padding-bottom:6rem;">
+    <div class="section-header">
+      <div class="section-label">// GET STARTED</div>
+      <h2 class="section-title">Download PLimit</h2>
+    </div>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Open source, MIT licensed. Download from GitHub. .NET 8 Runtime required. Windows 10+ only.</p>
+    <div class="btn-group" style="justify-content:center;">
+      <a href="https://github.com/0x78654C/PLimit" target="_blank" class="btn orange">View on GitHub →</a>
+      <a href="https://github.com/0x78654C/PLimit/releases" target="_blank" class="btn ghost orange">Releases ↗</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo">x<span>_</span>coding · PLimit</div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="ciare.html">CIARE</a>
+      <a href="xterminal.html">xTerminal</a>
+      <a href="pwm.html">PwM</a>
+      <a href="https://github.com/0x78654C/PLimit" target="_blank">GitHub</a>
+    </div>
+    <div class="foot-copy">© 2024–2026 x_coding · MIT License · .NET 8</div>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<script>
+// ── STARFIELD (orange tinted) ─────────────────────────
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function initStars() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  stars = Array.from({length:200},()=>({
+    x: Math.random()*W, y: Math.random()*H,
+    r: Math.random()*1.4+.2,
+    speed: Math.random()*.25+.05,
+    o: Math.random()*.55+.2,
+    twinkle: Math.random()*Math.PI*2
+  }));
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  stars.forEach(s=>{
+    s.twinkle+=.02; s.y+=s.speed;
+    if(s.y>H){s.y=0;s.x=Math.random()*W;}
+    const op = s.o*(0.7+0.3*Math.sin(s.twinkle));
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,159,10,${op})`; ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+initStars(); window.addEventListener('resize',initStars); draw();
+
+// ── Lightbox ──────────────────────────────────────
+function openLightbox(el) {
+  document.getElementById('lb-img').src = el.dataset.img || el.querySelector('img').src;
+  document.getElementById('lb-caption').textContent = el.querySelector('.shot-caption')?.textContent || el.dataset.caption || '';
+  document.getElementById('lb-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ── FADE-IN ───────────────────────────────────────────
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show');}),{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

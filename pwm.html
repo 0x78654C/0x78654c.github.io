@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PwM — Offline Password Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { --lb-rgb: 255,107,203; }
+    .section-label { color: #ff6bcb; }
+    .feat-card { border-color: rgba(255,107,203,.1); }
+    .feat-card:hover { border-color: rgba(255,107,203,.4); }
+    .feat-title { color: #ff6bcb; }
+    .feat-list li::before { color: #ff6bcb; }
+    .short-row:hover { border-color: rgba(255,107,203,.18); }
+    kbd { background: rgba(255,107,203,.08); border-color: rgba(255,107,203,.3); color: #ff6bcb; }
+    .div { background: linear-gradient(90deg,transparent,rgba(255,107,203,.25),transparent); }
+  </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div class="wrapper">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">x<span>_</span>coding</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ciare.html">CIARE</a></li>
+      <li><a href="xterminal.html" class="green-link">xTerminal</a></li>
+      <li><a href="pwm.html" class="active pink-link">PwM</a></li>
+      <li><a href="plimit.html" class="orange-link">PLimit</a></li>
+      <li><a href="https://github.com/0x78654C/PwM" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="product-hero">
+    <div class="hero-glow pink"></div>
+    <div class="product-hero-content">
+      <div class="hero-label pink">// OFFLINE PASSWORD VAULT</div>
+      <div class="hero-name pink">PwM</div>
+      <div class="hero-sub" style="color:#ff6bcb;opacity:.6;">AES-256 · Argon2id · HIBP · .NET 8 · Windows &amp; Linux</div>
+      <p class="hero-desc">
+        A fully offline password manager that keeps your credentials under your control.
+        Vaults are encrypted with AES-256, master passwords hashed with Argon2id,
+        and every new entry is checked against the Have I Been Pwned breach database —
+        without ever sending your passwords to any server.
+      </p>
+      <div class="btn-group">
+        <a href="https://github.com/0x78654C/PwM" target="_blank" class="btn pink">GitHub →</a>
+        <a href="#features" class="btn ghost pink">Explore Features ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar pink fade">
+    <div class="stat-item"><span class="s-num pink">AES-256</span><span class="s-lbl">Encryption</span></div>
+    <div class="stat-item"><span class="s-num pink">Argon2id</span><span class="s-lbl">Master Hash</span></div>
+    <div class="stat-item"><span class="s-num pink">15s</span><span class="s-lbl">Clipboard Clear</span></div>
+    <div class="stat-item"><span class="s-num pink">10 min</span><span class="s-lbl">Session Expiry</span></div>
+    <div class="stat-item"><span class="s-num pink">Win+Lin</span><span class="s-lbl">Platform</span></div>
+    <div class="stat-item"><span class="s-num pink">.NET 8</span><span class="s-lbl">Framework</span></div>
+  </div>
+
+  <!-- SCREENSHOT GALLERY -->
+  <div class="section fade" id="features">
+    <div class="section-header">
+      <div class="section-label">// INTERFACE</div>
+      <h2 class="section-title">Clean &amp; Secure by Design</h2>
+      <p class="section-sub">Material Design UI on Windows. Minimal CLI on Linux. Same encrypted vault, any platform.</p>
+    </div>
+    <div class="shots-grid">
+      <div class="shot p shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../PwM/Media/1.jpg" alt="PwM Main Window"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">Main vault window</div>
+      </div>
+      <div class="shot p shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../PwM/Media/2.jpg" alt="PwM Account View"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">Account management</div>
+      </div>
+      <div class="shot p shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../PwM/Media/1v.jpg" alt="PwM Vertical"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">Password entry detail</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- VAULT FEATURES -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// VAULT MANAGEMENT</div>
+      <h2 class="section-title">Your Credentials, Your Control</h2>
+      <p class="section-sub">Everything you need to manage multiple vaults with zero cloud dependency.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card p fade">
+        <span class="feat-icon">🔐</span>
+        <div class="feat-title">AES-256 Encryption</div>
+        <p class="feat-desc">Vault files use Rijndael AES-256 encryption. Data never leaves your device in plaintext.</p>
+        <ul class="feat-list p">
+          <li>Encrypted <code>.x</code> vault file format</li>
+          <li>Master password hashed with Argon2id</li>
+          <li>No cloud sync — fully offline</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">🗂️</span>
+        <div class="feat-title">Multi-Vault Support</div>
+        <p class="feat-desc">Create unlimited vaults for different contexts — personal, work, projects — each with its own master password.</p>
+        <ul class="feat-list p">
+          <li>Create, delete, and switch vaults</li>
+          <li>Import / export vault files</li>
+          <li>Per-user isolation on Windows</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">🤝</span>
+        <div class="feat-title">Shared Vaults</div>
+        <p class="feat-desc">Share vaults with team members via file servers or local network shares — perfect for small teams.</p>
+        <ul class="feat-list p">
+          <li>Import from network locations</li>
+          <li>Team password sharing workflow</li>
+          <li>Windows GUI only</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">🔑</span>
+        <div class="feat-title">Account Management</div>
+        <p class="feat-desc">Organise credentials by application. Add, update, delete, and search accounts within any vault.</p>
+        <ul class="feat-list p">
+          <li>Add / update / delete accounts</li>
+          <li>Change master password anytime</li>
+          <li>Show password toggle (eye icon)</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">📋</span>
+        <div class="feat-title">Secure Clipboard</div>
+        <p class="feat-desc">Copy any password to clipboard — it auto-clears after 15 seconds, leaving nothing in your paste buffer.</p>
+        <ul class="feat-list p">
+          <li>15-second auto-clear timer</li>
+          <li>Visual countdown notification</li>
+          <li>No accidental paste leaks</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">⏱️</span>
+        <div class="feat-title">Session Expiry</div>
+        <p class="feat-desc">Vault sessions expire automatically after 10 minutes of inactivity and on Windows lock screen events.</p>
+        <ul class="feat-list p">
+          <li>Configurable timeout (default 10 min)</li>
+          <li>Auto-lock on Windows lock / suspend</li>
+          <li>Re-auth required for modify operations every 30 min</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- SECURITY SECTION -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// SECURITY CORE</div>
+      <h2 class="section-title">Zero-Trust Password Storage</h2>
+      <p class="section-sub">Modern cryptographic standards applied at every layer.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card p fade">
+        <span class="feat-icon">🛡️</span>
+        <div class="feat-title">Argon2id Hashing</div>
+        <p class="feat-desc">Your master password is never stored. It's hashed using Argon2id — the winner of the Password Hashing Competition — making brute-force attacks computationally infeasible.</p>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">🌐</span>
+        <div class="feat-title">Breach Detection</div>
+        <p class="feat-desc">Every password you add is checked against the <strong style="color:#ff6bcb;">Have I Been Pwned</strong> API using k-anonymity — only the first 5 characters of the SHA-1 hash are ever sent.</p>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">🔒</span>
+        <div class="feat-title">Password Policy</div>
+        <p class="feat-desc">Enforces strong passwords: 12+ characters, uppercase, lowercase, numeric, and special characters required. No spaces allowed.</p>
+      </div>
+    </div>
+
+    <!-- Security terminal demo -->
+    <div class="term-win pink" style="margin-top:2.5rem;max-width:750px;margin-left:auto;margin-right:auto;">
+      <div class="term-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-ttl">PwM CLI — INTERACTIVE SESSION</div>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -createv</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Vault Name:</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">&gt; work</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Master Password: ••••••••••••</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Confirm Master Password: ••••••••••••</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">[+] Vault work was created!</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -addapp</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter vault name: <span class="t-out pk">work</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter master password for work vault: ••••••••••••</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter application name: <span class="t-out pk">GitHub</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter account name for GitHub: <span class="t-out pk">dev@example.com</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter password for dev@example.com: ••••••••••••</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">[+] Data for GitHub is encrypted and added to vault!</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -lista</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter vault name: <span class="t-out pk">work</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter master password for work vault: ••••••••••••</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter application name (or "all"): <span class="t-out pk">GitHub</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">-------------------------</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Application Name:    <span class="t-out pk">GitHub</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Account Name:        <span class="t-out pk">dev@example.com</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Password:            **************</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Reveal password? [y/N]: N</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- CLI SECTION -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// COMMAND-LINE INTERFACE</div>
+      <h2 class="section-title">PwM CLI — Linux &amp; Automation</h2>
+      <p class="section-sub">Full vault management from the terminal. Same AES-256 encryption, no GUI required. Each flag triggers an interactive prompt session.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card p fade">
+        <span class="feat-icon">🐧</span>
+        <div class="feat-title">Linux Native</div>
+        <p class="feat-desc">PwM_CLI targets .NET 8 and runs natively on Linux. Ideal for servers, DevOps pipelines, and headless environments.</p>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">⚙️</span>
+        <div class="feat-title">8 Commands</div>
+        <p class="feat-desc">Every operation is a single flag. The CLI then guides you interactively — vault name, master password, account details — step by step.</p>
+        <ul class="feat-list p">
+          <li><code>-h</code> — display help message</li>
+          <li><code>-createv</code> — create a new vault</li>
+          <li><code>-delv</code> — delete a vault</li>
+          <li><code>-listv</code> — list all vaults</li>
+          <li><code>-addapp</code> — add application + account</li>
+          <li><code>-lista</code> — list/read accounts (single or all)</li>
+          <li><code>-updatea</code> — update account password</li>
+          <li><code>-dela</code> — delete an account from vault</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">📦</span>
+        <div class="feat-title">Cross-Platform Vault</div>
+        <p class="feat-desc">Vault <code>.x</code> files created on Windows GUI can be opened with the Linux CLI and vice versa — same encryption, fully portable.</p>
+      </div>
+    </div>
+
+    <!-- CLI commands terminal -->
+    <div class="term-win pink" style="margin-top:2.5rem;max-width:750px;margin-left:auto;margin-right:auto;">
+      <div class="term-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-ttl">PwM CLI — ALL COMMANDS</div>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -h</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">PwM - Password Manager  Copyright @ 2020-2026 0x078654c</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">&nbsp;</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">[x] Usage of Password Manager commands:</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -h        Display this message</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -createv  Create a new vault</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -delv     Delete an existing vault</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -listv    Display all current vaults</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -addapp   Add a new application to vault</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -dela     Delete an existing application in vault</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -updatea  Update account password in vault</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">  -lista    Display existing applications in vault</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">&nbsp;</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -listv</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">List of current vaults:</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">----------------</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">work</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">----------------</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">personal</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">----------------</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -updatea</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter vault name: <span class="t-out pk">work</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter master password for work vault: ••••••••••••</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter application name: <span class="t-out pk">GitHub</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter account name for GitHub: <span class="t-out pk">dev@example.com</span></span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter new password for dev@example.com: ••••••••••••••</span></div>
+        <div class="tl"><span class="t-ps"> </span><span class="t-out pk">[+] Password for GitHub updated and re-encrypted!</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- TECH STACK -->
+  <div class="section fade" style="text-align:center;">
+    <div class="section-header">
+      <div class="section-label">// TECH STACK</div>
+      <h2 class="section-title">Built On</h2>
+    </div>
+    <div class="tech-cloud">
+      <span class="tech-badge">.NET 8</span>
+      <span class="tech-badge">WPF (Windows GUI)</span>
+      <span class="tech-badge">Windows Forms</span>
+      <span class="tech-badge">.NET Standard 2.1 (Lib)</span>
+      <span class="tech-badge">AES-256 / Rijndael</span>
+      <span class="tech-badge">Argon2id</span>
+      <span class="tech-badge">Have I Been Pwned API</span>
+      <span class="tech-badge">MaterialDesignThemes</span>
+      <span class="tech-badge">Gu.Wpf.Adorners</span>
+      <span class="tech-badge">Windows 7.0+ (WPF)</span>
+      <span class="tech-badge">Linux (CLI)</span>
+      <span class="tech-badge">MIT License</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section-full fade" style="text-align:center;padding-bottom:6rem;">
+    <div class="section-header">
+      <div class="section-label">// GET STARTED</div>
+      <h2 class="section-title">Download PwM</h2>
+    </div>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Open source, MIT licensed. Download from GitHub. .NET 8 Runtime required.</p>
+    <div class="btn-group" style="justify-content:center;">
+      <a href="https://github.com/0x78654C/PwM" target="_blank" class="btn pink">View on GitHub →</a>
+      <a href="https://github.com/0x78654C/PwM/releases" target="_blank" class="btn ghost pink">Releases ↗</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo">x<span>_</span>coding · PwM</div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="ciare.html">CIARE</a>
+      <a href="xterminal.html">xTerminal</a>
+      <a href="plimit.html">PLimit</a>
+      <a href="https://github.com/0x78654C/PwM" target="_blank">GitHub</a>
+    </div>
+    <div class="foot-copy">© 2022–2026 x_coding · MIT License · .NET 8</div>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<div id="lb-overlay" class="lb-overlay" onclick="closeLightbox()">
+  <div class="lb-box" onclick="event.stopPropagation()">
+    <button class="lb-close-btn" onclick="closeLightbox()">✕ CLOSE</button>
+    <img id="lb-img" src="" alt="">
+    <div id="lb-caption" class="lb-caption-bar"></div>
+  </div>
+</div>
+
+<script>
+// ── STARFIELD (pink tinted) ───────────────────────────
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function initStars() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  stars = Array.from({length:200},()=>({
+    x: Math.random()*W, y: Math.random()*H,
+    r: Math.random()*1.4+.2,
+    speed: Math.random()*.25+.05,
+    o: Math.random()*.55+.2,
+    twinkle: Math.random()*Math.PI*2
+  }));
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  stars.forEach(s=>{
+    s.twinkle+=.02; s.y+=s.speed;
+    if(s.y>H){s.y=0;s.x=Math.random()*W;}
+    const op = s.o*(0.7+0.3*Math.sin(s.twinkle));
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,107,203,${op})`; ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+initStars(); window.addEventListener('resize',initStars); draw();
+
+// ── Lightbox ──────────────────────────────────────
+function openLightbox(el) {
+  document.getElementById('lb-img').src = el.dataset.img || el.querySelector('img').src;
+  document.getElementById('lb-caption').textContent = el.querySelector('.shot-caption')?.textContent || '';
+  document.getElementById('lb-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ── FADE-IN ───────────────────────────────────────────
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show');}),{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

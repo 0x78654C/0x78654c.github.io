@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xTerminal — Linux-like Shell for Windows</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { --lb-rgb: 0,255,65; }
+    /* ── xTerminal logo hero above screenshots ── */
+    .xt-logo-row { text-align: center; padding: 2rem 0 2.2rem; }
+    .xt-hero-logo {
+      height: 80px; object-fit: contain;
+      filter: drop-shadow(0 0 28px #00ff41) drop-shadow(0 0 8px #00ff41);
+    }
+  </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div class="wrapper">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">x<span>_</span>coding</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ciare.html">CIARE</a></li>
+      <li><a href="xterminal.html" class="active green-link">xTerminal</a></li>
+      <li><a href="pwm.html" class="pink-link">PwM</a></li>
+      <li><a href="plimit.html" class="orange-link">PLimit</a></li>
+      <li><a href="https://github.com/0x78654C" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="product-hero">
+    <div class="hero-glow green"></div>
+    <div class="product-hero-content">
+      <div class="hero-label green">// LINUX-LIKE SHELL FOR WINDOWS</div>
+      <h1 class="hero-name green">xTerminal</h1>
+      <div class="hero-sub" style="color:#00ff41;opacity:.6;">75+ Commands · AI Built-In · .NET 10 · Windows 10+</div>
+      <p class="hero-desc">
+        A powerful terminal emulator that brings <strong style="color:#00ff41">Linux/Bash-style</strong> commands to Windows.
+        Built as an intelligent layer over PowerShell and CMD — with a built-in AI assistant,
+        C# code runner, encrypted password manager, interactive process monitor, port scanner,
+        firewall manager, and much more.
+      </p>
+      <div class="btn-group">
+        <a href="https://github.com/0x78654C" target="_blank" class="btn green">GitHub Repository →</a>
+        <a href="ciare.html" class="btn ghost" style="--ac:#7b2fff;">Try CIARE Editor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar green fade">
+    <div class="stat-item"><span class="s-num green">75+</span><span class="s-lbl">Commands</span></div>
+    <div class="stat-item"><span class="s-num green">3</span><span class="s-lbl">AI Engines</span></div>
+    <div class="stat-item"><span class="s-num green">Win 10+</span><span class="s-lbl">Compatible</span></div>
+    <div class="stat-item"><span class="s-num green">.NET 10</span><span class="s-lbl">Framework</span></div>
+    <div class="stat-item"><span class="s-num green">MIT</span><span class="s-lbl">License</span></div>
+    <div class="stat-item"><span class="s-num green">v2.0.8</span><span class="s-lbl">Version</span></div>
+  </div>
+
+  <!-- TERMINAL DEMO -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// LIVE DEMO</div>
+      <h2 class="section-title">Feel the Power</h2>
+    </div>
+    <div class="term-win green" style="max-width:900px;margin:0 auto;">
+      <div class="term-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-ttl">xTERMINAL v2.0.8 — C:\Users\dev</div>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="t-ps">dev@MACHINE ~/projects $</span><span class="t-cmd">ls -t -l 2</span></div>
+        <div class="tl"><span class="t-out g">📁 CIARE &nbsp;&nbsp;&nbsp;&nbsp;📁 xTerminal &nbsp;&nbsp;&nbsp;&nbsp;📁 docs &nbsp;&nbsp;&nbsp;&nbsp;📄 README.md</span></div>
+        <div style="height:.3rem;"></div>
+        <div class="tl"><span class="t-ps">dev@MACHINE ~/projects $</span><span class="t-cmd">wtop</span></div>
+        <div class="tl"><span class="t-out g">[ Interactive process monitor — navigate with ↑↓, kill with k, search with / ]</span></div>
+        <div style="height:.3rem;"></div>
+        <div class="tl"><span class="t-ps">dev@MACHINE ~/projects $</span><span class="t-cmd">cport -p 1-1024</span></div>
+        <div class="tl"><span class="t-out g">Port 80  : OPEN &nbsp;&nbsp; Port 443 : OPEN &nbsp;&nbsp; Port 22 : CLOSED</span></div>
+        <div style="height:.3rem;"></div>
+        <div class="tl"><span class="t-ps">dev@MACHINE ~/projects $</span><span class="t-cmd">cgpt -o "Explain async/await in C# in 2 sentences"</span></div>
+        <div class="tl"><span class="t-out p">[ Ollama / llama3.2 ]  async/await allows C# methods to run asynchronously without</span></div>
+        <div class="tl"><span class="t-out p">blocking the calling thread, enabling responsive UIs and efficient I/O operations.</span></div>
+        <div style="height:.3rem;"></div>
+        <div class="tl"><span class="t-ps">dev@MACHINE ~/projects $</span><span class="t-cmd">ccs hello.cs -p "World"</span></div>
+        <div class="tl"><span class="t-out g">Hello, World! — compiled and executed via Roslyn in 38ms</span></div>
+        <div style="height:.3rem;"></div>
+        <div class="tl"><span class="t-ps">dev@MACHINE ~/projects $</span><span class="t-cmd">extip</span></div>
+        <div class="tl"><span class="t-out c">External IP: 203.0.113.42</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREENSHOT -->
+  <div class="section fade" style="padding-top:0;">
+    <div style="max-width:1200px;margin:0 auto;">
+
+      <!-- Logo header -->
+      <div class="xt-logo-row">
+        <img src="../xTerminal/media/xTerminal.png" alt="xTerminal"
+             class="xt-hero-logo" onerror="this.style.display='none'">
+      </div>
+
+      <!-- Interactive screenshots: wtop + fxp side by side -->
+      <div class="shots-grid" style="grid-template-columns:repeat(2,1fr);gap:1.2rem;">
+        <div class="shot g shot-ix" data-img="../xTerminal/media/wtop2.png"
+             data-caption="WTop — Interactive Process Manager"
+             onclick="openLightbox(this)">
+          <div class="zoom-badge">⤢ EXPAND</div>
+          <img src="../xTerminal/media/wtop2.png" alt="WTop"
+               onerror="this.parentElement.style.display='none'">
+          <div class="shot-caption">WTop — Interactive Process Manager</div>
+        </div>
+        <div class="shot g shot-ix" data-img="../xTerminal/media/fxp.png"
+             data-caption="fxp — xFile Explorer (browse files &amp; dirs)"
+             onclick="openLightbox(this)">
+          <div class="zoom-badge">⤢ EXPAND</div>
+          <img src="../xTerminal/media/fxp.png" alt="fxp — xFile Explorer"
+               onerror="this.parentElement.style.display='none'">
+          <div class="shot-caption">fxp — xFile Explorer (browse files &amp; dirs)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lb-overlay" class="lb-overlay" onclick="closeLightbox()">
+    <div class="lb-box" onclick="event.stopPropagation()">
+      <button class="lb-close-btn" onclick="closeLightbox()">✕ CLOSE</button>
+      <img id="lb-img" src="" alt="">
+      <div id="lb-caption" class="lb-caption-bar"></div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- SYSTEM COMMANDS -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 01</div>
+      <h2 class="section-title">System Administration</h2>
+      <p class="section-sub">Deep Windows integration — manage processes, services, firewall, hardware, and power states from one terminal.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card g">
+        <span class="feat-icon">📊</span>
+        <div class="feat-title green">WTop — Process Monitor</div>
+        <p class="feat-desc">Interactive terminal UI for process management. Navigate with arrow keys, kill processes, search by name, and sort by CPU / Memory / Name.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">⚙️</span>
+        <div class="feat-title green">Service Manager</div>
+        <p class="feat-desc">List, start, stop, and restart Windows services. Check status, read descriptions, and manage services on remote machines with <code>-r</code>.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🔥</span>
+        <div class="feat-title green">Firewall Manager</div>
+        <p class="feat-desc">Full firewall rule control — list, add, delete, enable, disable. Filter by inbound/outbound. Configure protocols, ports, profiles, and addresses.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">💻</span>
+        <div class="feat-title green">System Info</div>
+        <p class="feat-desc">Display BIOS info, storage device details, PC system information — locally or on a remote machine.</p>
+        <ul class="feat-list g">
+          <li><code>bios</code> — BIOS details (local/remote)</li>
+          <li><code>sinfo</code> — Storage devices</li>
+          <li><code>pcinfo</code> — Full system summary</li>
+        </ul>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🔌</span>
+        <div class="feat-title green">Power Management</div>
+        <p class="feat-desc">Reboot, shutdown, sleep, hibernate, or logoff — locally or on remote machines. Force flag available for stubborn sessions.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🖥️</span>
+        <div class="feat-title green">Shell Interop</div>
+        <p class="feat-desc">Prefix <code>ps</code> to run any PowerShell command. Prefix <code>cmd</code> for CMD. Both shells accessible without leaving xTerminal.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- FILE OPS -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 02</div>
+      <h2 class="section-title">File System Operations</h2>
+      <p class="section-sub">All the file commands you love from Linux, tuned for Windows with CRC verification, metadata extraction, and smart search.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card g">
+        <span class="feat-icon">📄</span>
+        <div class="feat-title green">cat — Advanced Viewer</div>
+        <p class="feat-desc">Display files with rich filtering: first/last N lines, line ranges, contains/starts/ends/equals search, count lines, concatenate multiple files.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">📋</span>
+        <div class="feat-title green">ls — Directory Listing</div>
+        <p class="feat-desc">List with file/dir filter, duplicate detection (MD5), size scan, file count, timestamps, tree view with depth control, and text highlight.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">✅</span>
+        <div class="feat-title green">CRC-Verified Copy/Move</div>
+        <p class="feat-desc"><code>fcopy</code> and <code>fmove</code> verify data integrity via CRC checksum after every operation. Never silently corrupt a file again.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🔐</span>
+        <div class="feat-title green">Secure Delete (shred)</div>
+        <p class="feat-desc">Overwrite file data with multiple passes (default 3) before deletion. Configurable pass count. No recovery possible.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🔍</span>
+        <div class="feat-title green">locate — Smart Search</div>
+        <p class="feat-desc">Find files and directories by contains / starts-with / ends-with / exact name. Filter to files-only or dirs-only. Save results to file.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🗜️</span>
+        <div class="feat-title green">zip — Archive Manager</div>
+        <p class="feat-desc">Create archives from multiple files and folders. List zip contents, extract, and control compression level (Optimal / Fastest / Smallest).</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">♾️</span>
+        <div class="feat-title green">diff &amp; cmp</div>
+        <p class="feat-desc"><code>diff</code> shows file differences (verbose mode available). <code>cmp</code> compares files by MD5 hash for a quick identity check.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🖼️</span>
+        <div class="feat-title green">exif &amp; file</div>
+        <p class="feat-desc"><code>exif</code> extracts image metadata. <code>file</code> checks file type from magic byte signatures — path, extension, hex, and description.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREENSHOT ROW -->
+  <div class="section fade" style="padding-top:0;">
+    <div class="shots-grid">
+      <div class="shot g shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../xTerminal/media/2.bmp" alt="Hex dump" onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">hex — hex dump of any file</div>
+      </div>
+      <div class="shot g shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../xTerminal/media/5.bmp" alt="Auto-suggest" onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">TAB auto-suggest for files and folders</div>
+      </div>
+      <div class="shot g shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../xTerminal/media/4.png" alt="Password Manager" onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">pwm — encrypted password manager</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- NETWORKING -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 03</div>
+      <h2 class="section-title">Network Tools</h2>
+      <p class="section-sub">A complete network toolkit in your terminal — from speed tests to port scanning to Wake-on-LAN.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card g">
+        <span class="feat-icon">📡</span>
+        <div class="feat-title green">Port Scanner (cport)</div>
+        <p class="feat-desc">Scan single ports or full port ranges. Configure send/receive timeouts. Disable ping for stealth scanning.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🌐</span>
+        <div class="feat-title green">ping / trace</div>
+        <p class="feat-desc">Ping with configurable reply count or infinite mode (cancel with Ctrl+X). Traceroute with IPv6 support, hop limit, and timeout config.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">⚡</span>
+        <div class="feat-title green">Speed Test (ispeed)</div>
+        <p class="feat-desc">Test your internet speed against Google servers directly from the terminal.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">⬇️</span>
+        <div class="feat-title green">wget — File Downloader</div>
+        <p class="feat-desc">Download files from any URL with TLS/SSL support. Save to custom directory. Disable ping check for restricted hosts.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🔆</span>
+        <div class="feat-title green">Wake-on-LAN (wol)</div>
+        <p class="feat-desc">Send magic WOL packets to wake up any LAN device by IP and MAC address. Custom WOL port support.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🛡️</span>
+        <div class="feat-title green">MITM Detection (dspoof)</div>
+        <p class="feat-desc">Detect ARP spoofing and Man-in-the-Middle attacks on your local network segment.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- SECURITY & PRIVACY -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 04</div>
+      <h2 class="section-title">Security &amp; Privacy</h2>
+      <p class="section-sub">AES-256 password vaults, file hashing, hex inspection — security tooling baked into every session.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+      <div>
+        <div class="feat-card g" style="margin-bottom:1.3rem;">
+          <span class="feat-icon">🔒</span>
+          <div class="feat-title green">Password Manager (pwm)</div>
+          <p class="feat-desc">Local encrypted vault using Rijndael AES-256 with Argon2 key derivation. Multiple vaults, per-app entries, master password enforcement (12+ chars, upper, lower, number, special).</p>
+          <ul class="feat-list g" style="margin-top:.8rem;">
+            <li>Create / delete vaults</li>
+            <li>Add, update, delete app entries</li>
+            <li>List apps with masked passwords</li>
+            <li>Zero cloud exposure — fully local</li>
+          </ul>
+        </div>
+        <div class="feat-card g">
+          <span class="feat-icon">#️⃣</span>
+          <div class="feat-title green">File Hashing (hash / md5)</div>
+          <p class="feat-desc">Calculate MD5 (default), SHA-256, or SHA-512 checksums. Scan entire directories recursively. Save results to file for verification.</p>
+        </div>
+      </div>
+      <div>
+        <div class="feat-card g" style="margin-bottom:1.3rem;">
+          <span class="feat-icon">🔬</span>
+          <div class="feat-title green">Hex Dump (hex)</div>
+          <p class="feat-desc">Inspect the raw bytes of any file in a formatted hex dump. Export output to a file for analysis.</p>
+        </div>
+        <div class="feat-card g" style="margin-bottom:1.3rem;">
+          <span class="feat-icon">🗑️</span>
+          <div class="feat-title green">Secure Delete (shred)</div>
+          <p class="feat-desc">Multi-pass overwrite before deletion. Default 3 passes, configurable with <code>-i</code>. Prevents forensic file recovery.</p>
+        </div>
+        <div class="feat-card g">
+          <span class="feat-icon">📋</span>
+          <div class="feat-title green">File Permissions (cp)</div>
+          <p class="feat-desc">Check Windows file and folder permission ACLs at a glance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- AI INTEGRATION -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 05</div>
+      <h2 class="section-title">AI in Your Terminal</h2>
+      <p class="section-sub">Type <code>cgpt</code> and ask anything — cloud AI or fully private local LLM. Your choice.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-name">OpenAI / ChatGPT</div>
+        <p class="ai-desc">Set your API key once with <code>cgpt -setkey</code>. Pick any model. Ask questions about your system, code, or anything else directly from the shell prompt.</p>
+        <div class="ai-tag">CLOUD</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🌐</div>
+        <div class="ai-name">OpenRouter</div>
+        <p class="ai-desc">Access Claude, Mistral, Gemini, and hundreds of other models through OpenRouter's unified API — with the same <code>cgpt</code> command.</p>
+        <div class="ai-tag">CLOUD · MULTI-MODEL</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🖥️</div>
+        <div class="ai-name">Ollama — Local LLM</div>
+        <p class="ai-desc">Use <code>cgpt -o "question"</code> for fully offline, private AI. List local models with <code>cgpt -l</code>. Switch models anytime with <code>cgpt -sm modelname</code>.</p>
+        <div class="ai-tag" style="border-color:rgba(0,255,65,.4);color:#00ff41;">PRIVATE · OFFLINE</div>
+      </div>
+    </div>
+
+    <div class="term-win green" style="margin-top:2rem;max-width:800px;margin-left:auto;margin-right:auto;">
+      <div class="term-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-ttl">cgpt — AI ASSISTANT</div>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">cgpt -l</span></div>
+        <div class="tl"><span class="t-out g">[ Ollama models ]  llama3.2 · codellama · mistral · deepseek-coder</span></div>
+        <div style="height:.3rem;"></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">cgpt -sm codellama</span></div>
+        <div class="tl"><span class="t-out g">Model set to: codellama</span></div>
+        <div style="height:.3rem;"></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">cgpt -o "write a C# method to read a file asynchronously"</span></div>
+        <div class="tl"><span class="t-out p">async Task&lt;string&gt; ReadFileAsync(string path) =&gt;</span></div>
+        <div class="tl"><span class="t-out p">&nbsp;&nbsp;&nbsp;&nbsp;await File.ReadAllTextAsync(path);</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- C# CODE RUNNER -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 06</div>
+      <h2 class="section-title">C# Code Runner &amp; Add-ons</h2>
+      <p class="section-sub">Run <code>.cs</code> files instantly with Roslyn. Build custom commands in C# and load them as native xTerminal add-ons.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card g">
+        <span class="feat-icon">⚡</span>
+        <div class="feat-title green">ccs — Instant C# Execution</div>
+        <p class="feat-desc">Point <code>ccs</code> at any <code>.cs</code> file and it compiles and runs it in-memory via Roslyn. Pass parameters with <code>-p</code>. Top-level statements supported.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🔧</span>
+        <div class="feat-title green">! — C# Add-ons</div>
+        <p class="feat-desc">Create your own terminal commands in C#. Add them with <code>! -add</code>, list with <code>! -list</code>, invoke by name. Stored in the Add-ons directory.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">🔗</span>
+        <div class="feat-title green">Custom Aliases</div>
+        <p class="feat-desc">Define aliases for any command combination. Use <code>%</code> as a parameter placeholder. Manage with <code>alias -add</code>, <code>-del</code>, <code>-update</code>, <code>-list</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- PIPE & FEATURES -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 07</div>
+      <h2 class="section-title">Power Features</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+      <div>
+        <div class="feat-card g">
+          <span class="feat-icon">🔗</span>
+          <div class="feat-title green">Pipe Commands</div>
+          <ul class="feat-list g" style="margin-top:.3rem;">
+            <li><code>A ; B</code> — run B after A (always)</li>
+            <li><code>A &amp;&amp; B</code> — run B only if A succeeds</li>
+            <li><code>A || B</code> — run B only if A fails</li>
+            <li><code>A &amp;</code> — run A in background</li>
+            <li>Chains are fully nestable</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="feat-card g">
+          <span class="feat-icon">🎨</span>
+          <div class="feat-title green">Prompt Customization (ui)</div>
+          <ul class="feat-list g" style="margin-top:.3rem;">
+            <li>16 predefined colors for each element</li>
+            <li>5 prompt indicators (&gt; → =&gt; $ &gt;&gt;)</li>
+            <li>Toggle user@machine display</li>
+            <li>Customize directory color</li>
+            <li>Change output success color</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="feat-card g">
+          <span class="feat-icon">🔮</span>
+          <div class="feat-title green">TAB Auto-Suggest</div>
+          <p class="feat-desc">TAB auto-completes file and folder names for <code>cd</code>, <code>cat</code>, <code>ls</code>, <code>del</code>, <code>ccs</code>, <code>hex</code>, and more. Double TAB shows all suggestions.</p>
+        </div>
+      </div>
+      <div>
+        <div class="feat-card g">
+          <span class="feat-icon">📜</span>
+          <div class="feat-title green">Command History (ch)</div>
+          <p class="feat-desc">Browse up to 2000 previous commands with timestamps. Configurable history size. Clear history with <code>chistory</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXTRAS -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.3rem;">
+      <div class="feat-card g">
+        <span class="feat-icon">🎮</span>
+        <div class="feat-title green">Games</div>
+        <p class="feat-desc">Take a break — <code>flappy</code> (Flappy Bird) and <code>snake</code> (classic Snake) run right in the console.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">📧</span>
+        <div class="feat-title green">Email Client</div>
+        <p class="feat-desc">Send emails from the terminal. Supports Microsoft, Yahoo, and Gmail SMTP accounts.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">☁️</span>
+        <div class="feat-title green">File Hosting (waifu)</div>
+        <p class="feat-desc">Upload files to waifuvault.moe with expiry, password protection, one-time download, and bucket management.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">📅</span>
+        <div class="feat-title green">Utilities</div>
+        <p class="feat-desc"><code>cal</code> shows a calendar. <code>time</code> displays current time. <code>sort</code> sorts file data. <code>pjson</code> prettifies JSON. <code>tee</code> pipes to file.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMAND REFERENCE -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// REFERENCE</div>
+      <h2 class="section-title">Command Reference</h2>
+      <p class="section-sub">75+ commands at your fingertips. Click any to see what it does.</p>
+    </div>
+    <div class="cmd-cloud">
+      <span class="cmd-b">ls <small>list dirs</small></span>
+      <span class="cmd-b">cd <small>change dir</small></span>
+      <span class="cmd-b">cat <small>view file</small></span>
+      <span class="cmd-b">mkdir <small>make dir</small></span>
+      <span class="cmd-b">mkfile <small>make file</small></span>
+      <span class="cmd-b">del <small>delete</small></span>
+      <span class="cmd-b">mv <small>rename</small></span>
+      <span class="cmd-b">fcopy <small>CRC copy</small></span>
+      <span class="cmd-b">fmove <small>CRC move</small></span>
+      <span class="cmd-b">locate <small>find files</small></span>
+      <span class="cmd-b">diff <small>compare</small></span>
+      <span class="cmd-b">cmp <small>check same</small></span>
+      <span class="cmd-b">sort <small>sort data</small></span>
+      <span class="cmd-b">echo <small>write text</small></span>
+      <span class="cmd-b">attr <small>file attrs</small></span>
+      <span class="cmd-b">hex <small>hex dump</small></span>
+      <span class="cmd-b">exif <small>image meta</small></span>
+      <span class="cmd-b">file <small>file type</small></span>
+      <span class="cmd-b">zip <small>archive</small></span>
+      <span class="cmd-b">shred <small>secure del</small></span>
+      <span class="cmd-b">hash <small>checksum</small></span>
+      <span class="cmd-b">md5 <small>MD5 verify</small></span>
+      <span class="cmd-b">cp <small>permissions</small></span>
+      <span class="cmd-b">edit <small>text editor</small></span>
+      <span class="cmd-b">fxp <small>file explorer</small></span>
+      <span class="cmd-b">pjson <small>pretty JSON</small></span>
+      <span class="cmd-b">tee <small>pipe to file</small></span>
+      <span class="cmd-b">wtop <small>process UI</small></span>
+      <span class="cmd-b">plist <small>proc tree</small></span>
+      <span class="cmd-b">kill <small>kill process</small></span>
+      <span class="cmd-b">sc <small>services</small></span>
+      <span class="cmd-b">fw <small>firewall</small></span>
+      <span class="cmd-b">bios <small>BIOS info</small></span>
+      <span class="cmd-b">sinfo <small>storage info</small></span>
+      <span class="cmd-b">pcinfo <small>system info</small></span>
+      <span class="cmd-b">reboot <small>restart OS</small></span>
+      <span class="cmd-b">shutdown <small>power off</small></span>
+      <span class="cmd-b">sleep <small>hibernate</small></span>
+      <span class="cmd-b">logoff <small>force logoff</small></span>
+      <span class="cmd-b">lock <small>lock screen</small></span>
+      <span class="cmd-b">ifconfig <small>network NICs</small></span>
+      <span class="cmd-b">extip <small>external IP</small></span>
+      <span class="cmd-b">ispeed <small>speed test</small></span>
+      <span class="cmd-b">icheck <small>DNS check</small></span>
+      <span class="cmd-b">ping <small>ping host</small></span>
+      <span class="cmd-b">cport <small>port scan</small></span>
+      <span class="cmd-b">trace <small>traceroute</small></span>
+      <span class="cmd-b">wol <small>wake-on-LAN</small></span>
+      <span class="cmd-b">dspoof <small>MITM detect</small></span>
+      <span class="cmd-b">wget <small>download</small></span>
+      <span class="cmd-b">ssh <small>secure shell</small></span>
+      <span class="cmd-b">email <small>send email</small></span>
+      <span class="cmd-b">pwm <small>pwd manager</small></span>
+      <span class="cmd-b">cgpt <small>ask AI</small></span>
+      <span class="cmd-b">ccs <small>run C# file</small></span>
+      <span class="cmd-b">! <small>C# addon</small></span>
+      <span class="cmd-b">alias <small>custom cmd</small></span>
+      <span class="cmd-b">ui <small>prompt style</small></span>
+      <span class="cmd-b">ch <small>cmd history</small></span>
+      <span class="cmd-b">chistory <small>clear history</small></span>
+      <span class="cmd-b">bc <small>background cmds</small></span>
+      <span class="cmd-b">odir <small>open in Explorer</small></span>
+      <span class="cmd-b">nt <small>new terminal</small></span>
+      <span class="cmd-b">ps <small>PowerShell</small></span>
+      <span class="cmd-b">cmd <small>CMD shell</small></span>
+      <span class="cmd-b">pwd <small>print dir</small></span>
+      <span class="cmd-b">cal <small>calendar</small></span>
+      <span class="cmd-b">time <small>current time</small></span>
+      <span class="cmd-b">enc <small>encoding</small></span>
+      <span class="cmd-b">ln <small>shortcut</small></span>
+      <span class="cmd-b">waifu <small>file host</small></span>
+      <span class="cmd-b">flappy <small>game</small></span>
+      <span class="cmd-b">snake <small>game</small></span>
+      <span class="cmd-b">clear <small>clear screen</small></span>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
+  <!-- TECH STACK -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// UNDER THE HOOD</div>
+      <h2 class="section-title">Technology Stack</h2>
+    </div>
+    <div class="tech-cloud">
+      <span class="tech-badge">.NET 10 SDK</span>
+      <span class="tech-badge">C# 13</span>
+      <span class="tech-badge">Windows 10.0+</span>
+      <span class="tech-badge">Roslyn (Microsoft.CodeAnalysis)</span>
+      <span class="tech-badge">System.Management</span>
+      <span class="tech-badge">System.Management.Automation</span>
+      <span class="tech-badge">System.ServiceProcess</span>
+      <span class="tech-badge">Konscious Argon2</span>
+      <span class="tech-badge">Konscious Blake2</span>
+      <span class="tech-badge">DiffPlex</span>
+      <span class="tech-badge">OpenAI API Client</span>
+      <span class="tech-badge">OpenRouter</span>
+      <span class="tech-badge">Ollama (Microsoft.Extensions.AI)</span>
+      <span class="tech-badge">Waifuvault SDK</span>
+      <span class="tech-badge">System.Text.Encoding.CodePages</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section fade" style="text-align:center;padding-bottom:6rem;">
+    <div class="hero-badge" style="margin-bottom:1.5rem;border-color:rgba(0,255,65,.4);color:#00ff41;">// OPEN SOURCE · MIT LICENSE</div>
+    <h2 class="section-title">Ready to Upgrade Your Terminal?</h2>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Download xTerminal from GitHub. .NET 10 required. Works on Windows 10 and above.</p>
+    <div class="btn-group" style="justify-content:center;">
+      <a href="https://github.com/0x78654C" target="_blank" class="btn green">View on GitHub →</a>
+      <a href="ciare.html" class="btn ghost">Try CIARE Editor</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo">x<span>_</span>coding · xTerminal</div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="ciare.html">CIARE</a>
+      <a href="pwm.html">PwM</a>
+      <a href="plimit.html">PLimit</a>
+      <a href="https://github.com/0x78654C" target="_blank">GitHub</a>
+    </div>
+    <div class="foot-copy">© 2020–2026 x_coding · MIT License · v2.0.8.1</div>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<script>
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function initStars() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  stars = Array.from({length:200},()=>({
+    x: Math.random()*W, y: Math.random()*H,
+    r: Math.random()*1.3+.2, speed: Math.random()*.22+.04,
+    o: Math.random()*.6+.2, tw: Math.random()*Math.PI*2
+  }));
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  stars.forEach(s=>{
+    s.tw+=.018; s.y+=s.speed;
+    if(s.y>H){s.y=0;s.x=Math.random()*W;}
+    // Green-tinted stars for xTerminal theme
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(160,255,180,${s.o*(0.6+0.4*Math.sin(s.tw))})`; ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+initStars(); window.addEventListener('resize',initStars); draw();
+
+// ── Lightbox ──────────────────────────────────────
+function openLightbox(el) {
+  document.getElementById('lb-img').src = el.dataset.img || el.querySelector('img').src;
+  document.getElementById('lb-caption').textContent = el.querySelector('.shot-caption')?.textContent || '';
+  document.getElementById('lb-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:.1});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

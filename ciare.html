@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIARE — C# Interactive Runtime Editor</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { --lb-rgb: 0,245,255; }
+    /* Logo header */
+    .ci-logo-row { text-align: center; padding: 0 0 2rem; }
+    .ci-hero-logo { height: 80px; object-fit: contain; filter: drop-shadow(0 0 28px #00f5ff) drop-shadow(0 0 8px #00f5ff); }
+  </style>
+<body>
+<canvas id="starfield"></canvas>
+<div class="wrapper">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">x<span>_</span>coding</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ciare.html" class="active">CIARE</a></li>
+      <li><a href="xterminal.html" class="green-link">xTerminal</a></li>
+      <li><a href="pwm.html" class="pink-link">PwM</a></li>
+      <li><a href="plimit.html" class="orange-link">PLimit</a></li>
+      <li><a href="https://github.com/0x78654C/CIARE" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="product-hero">
+    <div class="hero-glow"></div>
+    <div class="product-hero-content">
+      <div class="hero-label">// C# INTERACTIVE RUNTIME EDITOR</div>
+      <h1 class="hero-name">CIARE</h1>
+      <div class="hero-sub">Write · Compile · Run · Collaborate · Ask AI · GitHub Copilot</div>
+      <p class="hero-desc">
+        A lightweight Windows text editor powered by <strong style="color:#00f5ff">Roslyn</strong> — compile and execute
+        C# code in-memory without any project setup. Features real-time diagnostics, IntelliSense,
+        live collaboration, NuGet package management, and <strong style="color:#00f5ff">four AI engines</strong>
+        (OpenAI · OpenRouter · Ollama · <strong style="color:#00f5ff">GitHub Copilot</strong>) ready to help you fix
+        errors and generate code.
+      </p>
+      <div class="btn-group">
+        <a href="https://github.com/0x78654C/CIARE" target="_blank" class="btn">GitHub Repository →</a>
+        <a href="xterminal.html" class="btn ghost" style="--ac:#7b2fff;">Try xTerminal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar fade">
+    <div class="stat-item"><span class="s-num">4</span><span class="s-lbl">AI Engines</span></div>
+    <div class="stat-item"><span class="s-num">75+</span><span class="s-lbl">Shortcuts</span></div>
+    <div class="stat-item"><span class="s-num">18+</span><span class="s-lbl">Themes</span></div>
+    <div class="stat-item"><span class="s-num">.NET 10</span><span class="s-lbl">Framework</span></div>
+    <div class="stat-item"><span class="s-num">MIT</span><span class="s-lbl">License</span></div>
+    <div class="stat-item"><span class="s-num">v3.0.0</span><span class="s-lbl">Version</span></div>
+  </div>
+
+  <!-- SCREENSHOT HERO -->
+  <div class="section fade">
+    <!-- Logo header -->
+    <div class="ci-logo-row">
+      <img src="../CIARE/Media/logoCiare.png" alt="CIARE"
+           class="ci-hero-logo" onerror="this.style.display='none'">
+    </div>
+    <div class="shot shot-ix" style="max-width:1100px;margin:0 auto;" onclick="openLightbox(this)">
+      <div class="zoom-badge">⤢ EXPAND</div>
+      <img src="../CIARE/Media/ciare_2.0.4.png" alt="CIARE Editor"
+           onerror="this.parentElement.style.display='none'">
+      <div class="shot-caption">CIARE v2.0.4 — Main editor window with syntax highlighting and output panel</div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- EDITOR FEATURES -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// MODULE 01</div>
+      <h2 class="section-title">Intelligent Code Editor</h2>
+      <p class="section-sub">A fully-featured editing environment built on ICSharpCode TextEditor with SharpDevelop-class tooling.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <span class="feat-icon">⚡</span>
+        <div class="feat-title">IntelliSense Completion</div>
+        <p class="feat-desc">Context-aware code suggestions powered by NRefactory and SharpDevelop Dom — type less, ship more.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🎨</span>
+        <div class="feat-title">Syntax Highlighting</div>
+        <p class="feat-desc">Rich syntax coloring with built-in themes (C#-Dark, C#-DarkVS, Default) plus <strong>8 new external themes</strong> — 8bit, Gruvbox, Lilac, Neon, NoctisHC, Noegi, NordWave, Sweet. Drop any <code>.xshd</code> file into the <code>themes\</code> folder to add more. No restart required.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📂</span>
+        <div class="feat-title">Code Folding</div>
+        <p class="feat-desc">Collapse curly-brace blocks, <code>#region</code> / <code>#endregion</code> directives, and XML doc comments to keep large files navigable.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🪟</span>
+        <div class="feat-title">Split Editor</div>
+        <p class="feat-desc">Vertical or horizontal split lets you edit two sections of the same file side-by-side — switch areas with <kbd>Ctrl+U</kbd>.</p>
+        <ul class="feat-list">
+          <li>Ctrl+W — vertical split</li>
+          <li>Ctrl+Shift+W — horizontal split</li>
+        </ul>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔍</span>
+        <div class="feat-title">Search &amp; Replace</div>
+        <p class="feat-desc">Find text with Ctrl+F, find-and-replace with Ctrl+H, jump to any line number with Ctrl+G.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📑</span>
+        <div class="feat-title">Multi-Tab Editing</div>
+        <p class="feat-desc">Open multiple files in tabs. Add new tabs with Ctrl+Tab, navigate left/right, and close any tab independently or all at once.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🌓</span>
+        <div class="feat-title">Dark / Light Mode</div>
+        <p class="feat-desc">Toggle dark mode instantly. Editor colors, output pane, menus, and all dialogs adapt automatically.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔴</span>
+        <div class="feat-title">Real-Time Diagnostics</div>
+        <p class="feat-desc">Roslyn-powered wave underlines appear 800ms after you stop typing. Errors and warnings appear in the <strong>Errors tab</strong> with line navigation on double-click. <strong>Right-click any error</strong> to Copy it or send it directly to Ask AI for a fix.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">💾</span>
+        <div class="feat-title">File Management</div>
+        <p class="feat-desc">Open, save, save-as, drag &amp; drop files. The title bar shows unsaved changes with an asterisk. Mark a file to auto-open on next launch or Windows startup.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREENSHOTS ROW -->
+  <div class="section fade">
+    <div class="shots-grid">
+      <div class="shot shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../CIARE/Media/ciare_inteli.png" alt="IntelliSense"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">IntelliSense code completion in action</div>
+      </div>
+      <div class="shot shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../CIARE/Media/ciare_split2.png" alt="Split view"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">Vertical split editor view</div>
+      </div>
+      <div class="shot shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="../CIARE/Media/ciare_menu.png" alt="Menu system"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">Full menu system and toolbar</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- COMPILATION & EXECUTION -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// MODULE 02</div>
+      <h2 class="section-title">Compile &amp; Execute — Instantly</h2>
+      <p class="section-sub">Roslyn compiles your code in-memory. Press F5. Done. No project files, no solution setup, no waiting.</p>
+    </div>
+
+    <div class="term-win" style="max-width:800px;margin:0 auto 2.5rem;">
+      <div class="term-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-ttl">CIARE — OUTPUT PANEL</div>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="t-ps">// Press F5 to run...</span></div>
+        <div class="tl"><span class="t-out c">[ Roslyn Compiler ]  Compilation OK — 0 errors, 0 warnings</span></div>
+        <div class="tl"><span class="t-out g">Hello, World from C# on .NET 10!</span></div>
+        <div class="tl"><span class="t-out g">Fibonacci: 0 1 1 2 3 5 8 13 21 34</span></div>
+        <div class="tl"><span class="t-out y">────────────────────────────────────────</span></div>
+        <div class="tl"><span class="t-out c">Execution time: 42 ms</span></div>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feat-card">
+        <span class="feat-icon">🚀</span>
+        <div class="feat-title">In-Memory Execution</div>
+        <p class="feat-desc">Compile and run C# in-memory — no temporary files, no disk writes. Results appear in the output panel in milliseconds.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📦</span>
+        <div class="feat-title">Binary Compilation</div>
+        <p class="feat-desc">Export to <code>.exe</code> or <code>.dll</code>. Choose Debug / Release, target Any CPU or x64, and select your .NET version (6 · 7 · 8 · 10).</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">⚙️</span>
+        <div class="feat-title">Native AOT Publish</div>
+        <p class="feat-desc">Ahead-of-Time compilation produces a fully self-contained, optimized native binary with no runtime dependency.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📝</span>
+        <div class="feat-title">Command-Line Args</div>
+        <p class="feat-desc">Set parameters to pass to your compiled program via Ctrl+L. Arguments persist across sessions.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">⏱️</span>
+        <div class="feat-title">Performance Metrics</div>
+        <p class="feat-desc">Compilation time and execution runtime are displayed in milliseconds so you can profile your code instantly.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔧</span>
+        <div class="feat-title">Compiler Options</div>
+        <p class="feat-desc">Toggle compiler warnings, allow unsafe code blocks, and configure any compiler switch from the options panel.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- AI INTEGRATION -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// MODULE 03</div>
+      <h2 class="section-title">4× AI Integration</h2>
+      <p class="section-sub">Four AI engines. One interface. Ask anything — generate code, fix errors, explain logic — with Ctrl+Shift+P, right-click in the editor, or right-click any error in the Errors tab.</p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-name">OpenAI / ChatGPT</div>
+        <p class="ai-desc">Connect your OpenAI API key and select GPT-4 or any other model. Set token limits, temperature, and get precise answers for your C# code.</p>
+        <div class="ai-tag">CLOUD</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🌐</div>
+        <div class="ai-name">OpenRouter</div>
+        <p class="ai-desc">Access hundreds of models from a single API — Claude, Mistral, LLaMA, Gemini, and more. Swap models without changing your workflow.</p>
+        <div class="ai-tag">CLOUD</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🖥️</div>
+        <div class="ai-name">Ollama — Local LLM</div>
+        <p class="ai-desc">No cloud, no API key, no data leaves your machine. CIARE auto-detects Ollama and lists all installed models. Streaming responses, full chat history.</p>
+        <div class="ai-tag" style="border-color:rgba(0,245,255,.4);color:#00f5ff;">PRIVATE · OFFLINE</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🐙</div>
+        <div class="ai-name">GitHub Copilot</div>
+        <p class="ai-desc">Authenticates via GitHub OAuth device flow — no manual token setup. Supports all Copilot models (GPT-4o, Claude Sonnet, Gemini and more). Falls back to GitHub Models free tier automatically.</p>
+        <div class="ai-tag" style="border-color:rgba(0,245,255,.4);color:#00f5ff;">NEW · v3.0.0</div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;" class="term-win">
+      <div class="term-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-ttl">CIARE — ASK AI (Ctrl+Shift+P)</div>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="t-out">Right-click error in Errors tab → Ask AI</span></div>
+        <div class="tl"><span class="t-out c">[ Pre-filled ] Fix this error: ✖  Line 12   CS0103  The name 'Consol' does not exist</span></div>
+        <div class="tl"><span class="t-ps">You &gt;</span><span class="t-cmd">Fix this error and show me the corrected line</span></div>
+        <div class="tl"><span class="t-out p">[ Ollama / llama3.2 ]  The identifier 'Consol' is misspelled. Change it to 'Console':</span></div>
+        <div class="tl"><span class="t-out g">  Console.WriteLine("Hello, World!");</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE SHARE -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// MODULE 04</div>
+      <h2 class="section-title">Live Share Collaboration</h2>
+      <p class="section-sub">Real-time co-editing powered by ASP.NET SignalR. Two developers, one file, zero friction.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+      <div>
+        <div class="features-grid" style="grid-template-columns:1fr;">
+          <div class="feat-card">
+            <span class="feat-icon">🔴</span>
+            <div class="feat-title">Live Session Indicator</div>
+            <p class="feat-desc">A red bubble appears in the status bar when you're broadcasting. The active shared tab is highlighted in red.</p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">🔑</span>
+            <div class="feat-title">Session ID + Password</div>
+            <p class="feat-desc">Share your Session ID and password with a collaborator. They join with Ctrl+Q — instantly synced.</p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">📡</span>
+            <div class="feat-title">SignalR WebSocket</div>
+            <p class="feat-desc">Built on ASP.NET SignalR for low-latency, bidirectional real-time updates. Supports remote server connections.</p>
+          </div>
+        </div>
+      </div>
+      <div class="shots-grid" style="grid-template-columns:1fr;">
+        <div class="shot shot-ix" onclick="openLightbox(this)">
+          <div class="zoom-badge">⤢ EXPAND</div>
+          <img src="../CIARE/Media/ls_start.png" alt="Live Share start"
+               onerror="this.parentElement.style.display='none'">
+          <div class="shot-caption">Live Share session management dialog</div>
+        </div>
+        <div class="shot shot-ix" style="margin-top:1rem;" onclick="openLightbox(this)">
+          <div class="zoom-badge">⤢ EXPAND</div>
+          <img src="../CIARE/Media/ls_notify.png" alt="Live Share notification"
+               onerror="this.parentElement.style.display='none'">
+          <div class="shot-caption">Red notification bubble when broadcasting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- NUGET -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// MODULE 05</div>
+      <h2 class="section-title">Built-in NuGet Manager</h2>
+      <p class="section-sub">Search, download, and reference any package from nuget.org — without leaving the editor. Press Ctrl+R.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <span class="feat-icon">🔎</span>
+        <div class="feat-title">Search &amp; Discover</div>
+        <p class="feat-desc">Search the full nuget.org catalog by package name. Latest version is auto-detected and pre-selected.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">⬇️</span>
+        <div class="feat-title">One-Click Download</div>
+        <p class="feat-desc">Press Shift+F10 to download the selected package. DLLs are automatically referenced in your current session.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔗</span>
+        <div class="feat-title">Custom References</div>
+        <p class="feat-desc">Add any external managed library reference manually via the Reference Manager dialog. Works with local and remote assemblies.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- KEYBOARD SHORTCUTS -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// REFERENCE</div>
+      <h2 class="section-title">Key Keyboard Shortcuts</h2>
+    </div>
+    <div class="shorts-grid">
+      <div class="short-row"><div class="key-combo"><kbd>F5</kbd></div><span class="short-desc">Run code (in-memory compile &amp; execute)</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd></div><span class="short-desc">Ask AI</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>B</kbd></div><span class="short-desc">Compile to binary (.exe / .dll)</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>B</kbd></div><span class="short-desc">Publish binary</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>R</kbd></div><span class="short-desc">Add reference / NuGet</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>L</kbd></div><span class="short-desc">Set command-line arguments</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>W</kbd></div><span class="short-desc">Split window (vertical)</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>W</kbd></div><span class="short-desc">Split window (horizontal)</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>K</kbd></div><span class="short-desc">Show / hide output panel</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>G</kbd></div><span class="short-desc">Go to line number</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>F</kbd></div><span class="short-desc">Find text</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>H</kbd></div><span class="short-desc">Find and replace</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Q</kbd></div><span class="short-desc">Live Share management</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Tab</kbd></div><span class="short-desc">Add new editor tab</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>F11</kbd></div><span class="short-desc">Toggle full screen</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>T</kbd></div><span class="short-desc">Load C# template</span></div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- TECH STACK -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// UNDER THE HOOD</div>
+      <h2 class="section-title">Technology Stack</h2>
+    </div>
+    <div class="tech-cloud">
+      <span class="tech-badge">.NET 10 SDK</span>
+      <span class="tech-badge">C# 14</span>
+      <span class="tech-badge">Windows Forms</span>
+      <span class="tech-badge">Roslyn (Microsoft.CodeAnalysis)</span>
+      <span class="tech-badge">ICSharpCode.TextEditor</span>
+      <span class="tech-badge">SharpDevelop Dom</span>
+      <span class="tech-badge">NRefactory</span>
+      <span class="tech-badge">ASP.NET SignalR</span>
+      <span class="tech-badge">NuGet.Protocol</span>
+      <span class="tech-badge">Mono.Cecil</span>
+      <span class="tech-badge">OpenAI API Client</span>
+      <span class="tech-badge">OpenRouter</span>
+      <span class="tech-badge">Ollama (Microsoft.Extensions.AI)</span>
+      <span class="tech-badge">GitHub Copilot / GitHub Models</span>
+      <span class="tech-badge">AES-256-CBC + PBKDF2 + HMAC-SHA256</span>
+      <span class="tech-badge">Newtonsoft.Json</span>
+      <span class="tech-badge">Humanizer.Core</span>
+      <span class="tech-badge">log4net</span>
+      <span class="tech-badge">XSHD Themes</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section fade" style="text-align:center;padding-bottom:6rem;">
+    <div class="hero-badge" style="margin-bottom:1.5rem;">// OPEN SOURCE · MIT LICENSE</div>
+    <h2 class="section-title">Ready to Run C# Instantly?</h2>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Download CIARE from GitHub. .NET 10 SDK required. Windows 8+ supported.</p>
+    <div class="btn-group" style="justify-content:center;">
+      <a href="https://github.com/0x78654C/CIARE" target="_blank" class="btn">View on GitHub →</a>
+      <a href="https://github.com/0x78654C/CIARE/releases" target="_blank" class="btn ghost">Download Releases</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo">x<span>_</span>coding · CIARE</div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="xterminal.html">xTerminal</a>
+      <a href="pwm.html">PwM</a>
+      <a href="plimit.html">PLimit</a>
+      <a href="https://github.com/0x78654C/CIARE" target="_blank">GitHub</a>
+      <a href="https://github.com/0x78654C/CIARELiveShareAPI" target="_blank">Live Share API</a>
+    </div>
+    <div class="foot-copy">© 2022–2026 x_coding · MIT License · v3.0.0</div>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<div id="lb-overlay" class="lb-overlay" onclick="closeLightbox()">
+  <div class="lb-box" onclick="event.stopPropagation()">
+    <button class="lb-close-btn" onclick="closeLightbox()">✕ CLOSE</button>
+    <img id="lb-img" src="" alt="">
+    <div id="lb-caption" class="lb-caption-bar"></div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function initStars() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  stars = Array.from({length:200},()=>({
+    x: Math.random()*W, y: Math.random()*H,
+    r: Math.random()*1.3+.2, speed: Math.random()*.22+.04,
+    o: Math.random()*.6+.2, tw: Math.random()*Math.PI*2
+  }));
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  stars.forEach(s=>{
+    s.tw+=.018; s.y+=s.speed;
+    if(s.y>H){s.y=0;s.x=Math.random()*W;}
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(160,190,255,${s.o*(0.7+0.3*Math.sin(s.tw))})`; ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+initStars(); window.addEventListener('resize',initStars); draw();
+
+// ── Lightbox ──────────────────────────────────────
+function openLightbox(el) {
+  document.getElementById('lb-img').src = el.dataset.img || el.querySelector('img').src;
+  document.getElementById('lb-caption').textContent = el.querySelector('.shot-caption')?.textContent || '';
+  document.getElementById('lb-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

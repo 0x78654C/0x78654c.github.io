@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>x_coding SYSTEMS — CIARE &amp; xTerminal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .index-products { padding: 3rem 2rem 6rem; max-width: 1520px; margin: 0 auto; }
+    .scroll-hint {
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      color: #444488; font-size: .68rem; letter-spacing: 3px; text-transform: uppercase;
+      animation: bounce .8s ease-in-out infinite alternate;
+    }
+    @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(6px); } }
+    .scroll-arrow { color: #00f5ff; font-size: 1.2rem; }
+    .mission-strip {
+      background: rgba(4,8,24,.8); border-top: 1px solid rgba(0,245,255,.1);
+      border-bottom: 1px solid rgba(0,245,255,.1); padding: 4rem 2rem; text-align: center;
+    }
+    .mission-text {
+      font-family: 'Orbitron', monospace; font-size: clamp(1rem,3vw,1.6rem);
+      color: #c8c8e8; line-height: 1.7; max-width: 900px; margin: 0 auto;
+    }
+    .mission-text .hl-c { color: #00f5ff; }
+    .mission-text .hl-x { color: #00ff41; }
+    .mission-text .hl-p { color: #7b2fff; }
+    /* Force 4-column product grid on this page */
+    .index-products .products-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 1100px) {
+      .index-products .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .index-products .products-grid { grid-template-columns: 1fr; }
+    }
+    /* Scale card internals down for 4-column layout */
+    .index-products .product-card          { padding: 2rem 1.6rem; }
+    .index-products .product-logo          { height: 42px; margin-bottom: 1rem; }
+    .index-products .product-name          { font-size: 1.5rem; margin-bottom: .3rem; }
+    .index-products .product-tagline       { font-size: .76rem; letter-spacing: .5px; margin-bottom: 1.2rem; padding-bottom: 1rem; }
+    .index-products .feature-pills         { gap: .4rem; margin-bottom: 1.4rem; }
+    .index-products .pill                  { font-size: .62rem; letter-spacing: 1px; padding: .25rem .6rem; }
+    .index-products .product-stats         { gap: .5rem; margin-bottom: 1.5rem; padding: 1rem 0; }
+    .index-products .stat-num              { font-size: clamp(.8rem, 1vw, 1.2rem); word-break: break-word; }
+    .index-products .stat-lbl              { font-size: .58rem; letter-spacing: 1.5px; }
+    .index-products .product-card > p      { flex: 1; font-size: .78rem; margin-bottom: 1.5rem; }
+    /* Keep checkmark + text on same line in comparison terminals */
+    .comp-grid .term-body .tl { flex-wrap: nowrap; align-items: flex-start; }
+    .comp-grid .term-body .t-ps { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div class="wrapper">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">x<span>_</span>coding</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="ciare.html">CIARE</a></li>
+      <li><a href="xterminal.html" class="green-link">xTerminal</a></li>
+      <li><a href="pwm.html" class="pink-link">PwM</a></li>
+      <li><a href="plimit.html" class="orange-link">PLimit</a></li>
+      <li><a href="https://github.com/0x78654C" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">// SYSTEM ONLINE — x_coding SYSTEMS v2.0</div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="x_coding">x_coding</span><br>
+        <span style="color:#7b2fff;text-shadow:0 0 30px rgba(123,47,255,.6);">SYSTEMS</span>
+      </h1>
+      <p class="hero-tagline">Advanced development tools for the <em>modern age</em></p>
+      <div class="terminal-prompt">
+        <span class="ps1">›</span>
+        <span id="typeTarget"></span>
+        <span class="cursor"></span>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll to explore</span>
+        <span class="scroll-arrow">↓</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION STRIP -->
+  <div class="mission-strip fade">
+    <p class="mission-text">
+      Four open-source tools built for developers who demand more.<br>
+      <span class="hl-c">CIARE</span> — write, compile and run <span class="hl-p">C#</span> instantly.&nbsp;&nbsp;<br>
+      <span class="hl-x">xTerminal</span> — a Linux-like shell for <span class="hl-p">Windows</span>, with AI built in.<br>
+      <span style="color:#ff6bcb;">PwM</span> — offline password vault with <span class="hl-p">AES-256</span> encryption.&nbsp;&nbsp;
+      <span style="color:#ff9f0a;">PLimit</span> — fine-tune process priorities and <span class="hl-p">CPU affinity</span> in real time.
+    </p>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="index-products">
+    <div class="section-header fade" style="margin-top:2rem;">
+      <div class="section-label">// PRODUCT CATALOG</div>
+      <h2 class="section-title">Choose Your Weapon</h2>
+      <p class="section-sub">Four purpose-built tools, one ecosystem. Open source, MIT licensed, and built for speed.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- CIARE CARD -->
+      <div class="product-card ciare fade">
+        <div class="hc tl"></div><div class="hc tr"></div>
+        <div class="hc bl"></div><div class="hc br"></div>
+        <img src="../CIARE/Media/logoCiare.png" alt="CIARE" class="product-logo"
+             onerror="this.style.display='none'">
+        <div class="product-name">CIARE</div>
+        <div class="product-tagline">C# Interactive Runtime Editor &nbsp;·&nbsp; .NET 10 &nbsp;·&nbsp; Roslyn</div>
+        <div class="feature-pills">
+          <span class="pill">Roslyn Runtime</span>
+          <span class="pill">IntelliSense</span>
+          <span class="pill">AI × 4</span>
+          <span class="pill">GitHub Copilot</span>
+          <span class="pill">Live Share</span>
+          <span class="pill">NuGet</span>
+        </div>
+        <div class="product-stats">
+          <div class="stat">
+            <span class="stat-num">4</span>
+            <span class="stat-lbl">AI Engines</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">18+</span>
+            <span class="stat-lbl">Themes</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">10</span>
+            <span class="stat-lbl">.NET Target</span>
+          </div>
+        </div>
+        <p style="color:#6666aa;font-size:.82rem;line-height:1.75;margin-bottom:2rem;">
+          Write C# code and run it instantly — no project setup, no IDE overhead.
+          Full Roslyn diagnostics, IntelliSense, live collaboration via SignalR,
+          NuGet package downloads, and <strong style="color:#00f5ff">4 AI engines</strong>
+          (OpenAI · OpenRouter · Ollama · GitHub Copilot). v3.0.0.
+        </p>
+        <a href="ciare.html" class="btn">EXPLORE CIARE →</a>
+      </div>
+
+      <!-- XTERMINAL CARD -->
+      <div class="product-card xterminal fade">
+        <div class="hc tl"></div><div class="hc tr"></div>
+        <div class="hc bl"></div><div class="hc br"></div>
+        <img src="../xTerminal/media/xterminal_logo.png" alt="xTerminal" class="product-logo"
+             onerror="this.style.display='none'">
+        <div class="product-name" style="color:#00ff41;text-shadow:0 0 24px #00ff41;">xTerminal</div>
+        <div class="product-tagline">Linux-like Shell for Windows &nbsp;·&nbsp; .NET 10 &nbsp;·&nbsp; 75+ Commands</div>
+        <div class="feature-pills">
+          <span class="pill g">75+ Commands</span>
+          <span class="pill g">AI Built-in</span>
+          <span class="pill g">C# Runner</span>
+          <span class="pill g">Pwd Manager</span>
+          <span class="pill g">Port Scanner</span>
+          <span class="pill g">WTop</span>
+        </div>
+        <div class="product-stats">
+          <div class="stat">
+            <span class="stat-num" style="color:#00ff41;">75+</span>
+            <span class="stat-lbl">Commands</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" style="color:#00ff41;">3</span>
+            <span class="stat-lbl">AI Engines</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" style="color:#00ff41;">Win 10+</span>
+            <span class="stat-lbl">Compat</span>
+          </div>
+        </div>
+        <p style="color:#6666aa;font-size:.82rem;line-height:1.75;margin-bottom:2rem;">
+          Bash-style power on Windows. Manage services, scan ports, run C# scripts,
+          monitor processes with WTop, manage encrypted passwords, and ask AI — all
+          from one terminal window. Works on top of PowerShell and CMD.
+        </p>
+        <a href="xterminal.html" class="btn green">EXPLORE XTERMINAL →</a>
+      </div>
+
+      <!-- PWM CARD -->
+      <div class="product-card pwm fade">
+        <div class="hc tl"></div><div class="hc tr"></div>
+        <div class="hc bl"></div><div class="hc br"></div>
+        <img src="../PwM/Media/logo.png" alt="PwM" class="product-logo"
+             onerror="this.style.display='none'">
+        <div class="product-name" style="color:#ff6bcb;text-shadow:0 0 24px #ff6bcb;">PwM</div>
+        <div class="product-tagline">Offline Password Manager &nbsp;·&nbsp; .NET 8 &nbsp;·&nbsp; AES-256</div>
+        <div class="feature-pills">
+          <span class="pill p">AES-256</span>
+          <span class="pill p">Argon2id</span>
+          <span class="pill p">HIBP Check</span>
+          <span class="pill p">Shared Vaults</span>
+          <span class="pill p">CLI Support</span>
+          <span class="pill p">Win + Linux</span>
+        </div>
+        <div class="product-stats">
+          <div class="stat">
+            <span class="stat-num" style="color:#ff6bcb;">AES-256</span>
+            <span class="stat-lbl">Encryption</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" style="color:#ff6bcb;">15s</span>
+            <span class="stat-lbl">Clipboard Clear</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" style="color:#ff6bcb;">Win+Lin</span>
+            <span class="stat-lbl">Platform</span>
+          </div>
+        </div>
+        <p style="color:#6666aa;font-size:.82rem;line-height:1.75;margin-bottom:2rem;">
+          Offline-first password vault with Argon2id master hashing, AES-256 encryption,
+          breach detection via Have I Been Pwned, auto-clipboard clear, session expiry,
+          and a full CLI for Linux/automation workflows.
+        </p>
+        <a href="pwm.html" class="btn pink">EXPLORE PWM →</a>
+      </div>
+
+      <!-- PLIMIT CARD -->
+      <div class="product-card plimit fade">
+        <div class="hc tl"></div><div class="hc tr"></div>
+        <div class="hc bl"></div><div class="hc br"></div>
+        <img src="../PLimit/logo1.png" alt="PLimit" class="product-logo"
+             onerror="this.style.display='none'">
+        <div class="product-name" style="color:#ff9f0a;text-shadow:0 0 24px #ff9f0a;">PLimit</div>
+        <div class="product-tagline">Process Priority Manager &nbsp;·&nbsp; .NET 8 &nbsp;·&nbsp; Windows 10+</div>
+        <div class="feature-pills">
+          <span class="pill o">CPU Priority</span>
+          <span class="pill o">I/O Priority</span>
+          <span class="pill o">CPU Affinity</span>
+          <span class="pill o">Efficiency Mode</span>
+          <span class="pill o">Live Monitor</span>
+          <span class="pill o">Settings JSON</span>
+        </div>
+        <div class="product-stats">
+          <div class="stat">
+            <span class="stat-num" style="color:#ff9f0a;">6</span>
+            <span class="stat-lbl">Priority Levels</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" style="color:#ff9f0a;">Real-Time</span>
+            <span class="stat-lbl">CPU Monitor</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" style="color:#ff9f0a;">Win 10+</span>
+            <span class="stat-lbl">Compatible</span>
+          </div>
+        </div>
+        <p style="color:#6666aa;font-size:.82rem;line-height:1.75;margin-bottom:2rem;">
+          Fine-tune any running process: CPU priority, I/O priority, core affinity, CPU boost,
+          thread priority boost, and Windows Efficiency Mode (EcoQoS). Live per-core CPU
+          and RAM bars. Persistent JSON settings loaded on startup.
+        </p>
+        <a href="plimit.html" class="btn orange">EXPLORE PLIMIT →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUICK COMPARISON -->
+  <div class="section-full fade" style="padding:0 2rem 6rem;">
+    <div style="max-width:1300px;margin:0 auto;">
+      <div class="section-header">
+        <div class="section-label">// SIDE BY SIDE</div>
+        <h2 class="section-title">Which Tool Is Right For You?</h2>
+      </div>
+      <div class="comp-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+        <div>
+          <div class="term-win">
+            <div class="term-header">
+              <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+              <div class="term-ttl">CIARE — EDITOR</div>
+            </div>
+            <div class="term-body">
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out c">In-memory C# compilation with Roslyn</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out c">IntelliSense code completion</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out c">Live collaboration via SignalR</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out c">NuGet package manager built-in</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out c">Publish to .exe / .dll / Native AOT</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out c">Triple AI: OpenAI · OpenRouter · Ollama</span></div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:1rem;">
+            <a href="ciare.html" class="btn" style="font-size:.68rem;">LEARN MORE</a>
+          </div>
+        </div>
+        <div>
+          <div class="term-win green">
+            <div class="term-header">
+              <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+              <div class="term-ttl">xTERMINAL — SHELL</div>
+            </div>
+            <div class="term-body">
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out g">75+ Linux-style commands on Windows 10+</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out g">Pipe commands &amp; background tasks</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out g">WTop interactive process monitor</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out g">C# code runner with Roslyn</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out g">Port scanner, firewall, MITM detection</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out g">AI assistant (OpenAI/OpenRouter/Ollama)</span></div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:1rem;">
+            <a href="xterminal.html" class="btn green" style="font-size:.68rem;">LEARN MORE</a>
+          </div>
+        </div>
+        <div>
+          <div class="term-win pink">
+            <div class="term-header">
+              <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+              <div class="term-ttl">PWM — PASSWORD VAULT</div>
+            </div>
+            <div class="term-body">
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out pk">AES-256 encrypted vault files (.x)</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out pk">Argon2id master password hashing</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out pk">HIBP breach detection per password</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out pk">Clipboard auto-clear after 15 seconds</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out pk">Shared vaults + CLI for Linux</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out pk">Session lock on Windows lock screen</span></div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:1rem;">
+            <a href="pwm.html" class="btn pink" style="font-size:.68rem;">LEARN MORE</a>
+          </div>
+        </div>
+        <div>
+          <div class="term-win orange">
+            <div class="term-header">
+              <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+              <div class="term-ttl">PLIMIT — PROCESS TUNER</div>
+            </div>
+            <div class="term-body">
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out o">6-level CPU priority per process</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out o">CPU core affinity control</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out o">I/O priority (4 levels)</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out o">Windows Efficiency Mode (EcoQoS)</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out o">Live per-core CPU + RAM bar graph</span></div>
+              <div class="tl"><span class="t-ps">✓</span><span class="t-out o">Persistent JSON settings on startup</span></div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:1rem;">
+            <a href="plimit.html" class="btn orange" style="font-size:.68rem;">LEARN MORE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo">x<span>_</span>coding</div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="ciare.html">CIARE</a>
+      <a href="xterminal.html">xTerminal</a>
+      <a href="pwm.html">PwM</a>
+      <a href="plimit.html">PLimit</a>
+      <a href="https://github.com/0x78654C/CIARE" target="_blank">CIARE on GitHub</a>
+      <a href="https://github.com/0x78654C" target="_blank">GitHub Profile</a>
+    </div>
+    <div class="foot-copy">© 2022–2026 x_coding · MIT License · Built with Roslyn &amp; .NET 10</div>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<script>
+// ── STARFIELD ──────────────────────────────────────
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function initStars() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  stars = Array.from({length:220},()=>({
+    x: Math.random()*W, y: Math.random()*H,
+    r: Math.random()*1.4+.2,
+    speed: Math.random()*.25+.05,
+    o: Math.random()*.65+.25,
+    twinkle: Math.random()*Math.PI*2
+  }));
+}
+function drawStars(){
+  ctx.clearRect(0,0,W,H);
+  stars.forEach(s=>{
+    s.twinkle+=.02; s.y+=s.speed;
+    if(s.y>H){s.y=0;s.x=Math.random()*W;}
+    const op = s.o*(0.7+0.3*Math.sin(s.twinkle));
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(180,200,255,${op})`; ctx.fill();
+  });
+  requestAnimationFrame(drawStars);
+}
+initStars(); window.addEventListener('resize',initStars); drawStars();
+
+// ── TYPING ANIMATION ───────────────────────────────
+const phrases = [
+  'loading developer tools...',
+  'initializing Roslyn compiler...',
+  'connecting AI engines...',
+  'CIARE.exe --run',
+  'xTerminal --boot',
+  'PwM --unlock-vault',
+  'PLimit --tune-processes'
+];
+let pi=0,ci=0,deleting=false;
+const el = document.getElementById('typeTarget');
+function type(){
+  const phrase = phrases[pi];
+  if(!deleting){
+    el.textContent = phrase.slice(0,++ci);
+    if(ci===phrase.length){ deleting=true; setTimeout(type,1800); return; }
+  } else {
+    el.textContent = phrase.slice(0,--ci);
+    if(ci===0){ deleting=false; pi=(pi+1)%phrases.length; }
+  }
+  setTimeout(type, deleting?40:75);
+}
+type();
+
+// ── FADE-IN ON SCROLL ──────────────────────────────
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
