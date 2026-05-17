@@ -59,7 +59,7 @@
     <div class="stat-item"><span class="s-num green">Win 10+</span><span class="s-lbl">Compatible</span></div>
     <div class="stat-item"><span class="s-num green">.NET 10</span><span class="s-lbl">Framework</span></div>
     <div class="stat-item"><span class="s-num green">MIT</span><span class="s-lbl">License</span></div>
-    <div class="stat-item"><span class="s-num green">v3.0.0.0</span><span class="s-lbl">Version</span></div>
+    <div class="stat-item"><span class="s-num green">v3.0.1.0</span><span class="s-lbl">Version</span></div>
   </div>
 
   <!-- TERMINAL DEMO -->
@@ -71,7 +71,7 @@
     <div class="term-win green" style="max-width:900px;margin:0 auto;">
       <div class="term-header">
         <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
-        <div class="term-ttl">xTERMINAL v3.0.0.0 — C:\Users\dev</div>
+        <div class="term-ttl">xTERMINAL v3.0.1.0 — C:\Users\dev</div>
       </div>
       <div class="term-body">
         <div class="tl"><span class="t-ps">dev@MACHINE:~ $</span><span class="t-cmd">ls -t -l 2</span></div>
@@ -181,7 +181,7 @@
       <div class="feat-card g">
         <span class="feat-icon">🖥️</span>
         <div class="feat-title green">Shell Interop</div>
-        <p class="feat-desc">Prefix <code>ps</code> to run any PowerShell command. Prefix <code>cmd</code> for CMD. Both shells accessible without leaving xTerminal.</p>
+        <p class="feat-desc">Prefix <code>ps</code> to run any PowerShell command. Prefix <code>cmd</code> for CMD. Both shells accessible without leaving xTerminal. New in v3.0.1.0: run environment (<code>cmd</code>/<code>ps</code>) commands directly without any prefix — alias commands take priority if names clash.</p>
       </div>
       <div class="feat-card g">
         <span class="feat-icon">🗑️</span>
@@ -541,13 +541,18 @@
     <div class="section-header">
       <div class="section-label green">// MODULE 08</div>
       <h2 class="section-title">Scripting &amp; Automation</h2>
-      <p class="section-sub">A full scripting language built for xTerminal, plus named chains, context snapshots, and persistent notes.</p>
+      <p class="section-sub">A full scripting language built for xTerminal, plus a built-in code editor, named chains, context snapshots, and persistent notes.</p>
     </div>
     <div class="features-grid">
       <div class="feat-card g">
         <span class="feat-icon">📜</span>
         <div class="feat-title green">xt — TermXT Scripting Language</div>
-        <p class="feat-desc">A full scripting language built for xTerminal. Run <code>.xt</code> script files, validate syntax with <code>xt -check</code>, and scaffold templates. Supports variables, math <code>eval</code>, string ops, <code>if/elif/else</code>, <code>loop</code>, <code>while</code>, <code>each</code>, functions, file I/O, user input, <code>try/catch</code>, and full shell integration via <code>run</code> and <code>capture</code>.</p>
+        <p class="feat-desc">A full scripting language built for xTerminal. Run <code>.xt</code> script files, validate syntax with <code>xt -check</code>, and scaffold templates. Supports variables, math <code>eval</code>, string ops, <code>if/elif/else</code>, <code>loop</code>, <code>while</code>, <code>each</code>, functions, file I/O, user input, <code>try/catch</code>, and full shell integration via <code>run</code> and <code>capture</code>. Bug fix: escape sequence parsing (<code>\t</code>, <code>\n</code>) now interpolates correctly.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">✏️</span>
+        <div class="feat-title green">xte — TermXT Editor</div>
+        <p class="feat-desc">A built-in code editor opened directly from the terminal. Features C# IntelliSense, Roslyn real-time error diagnostics, multi-language syntax highlighting (C#, C/C++, Rust, JS, Python), integrated file explorer, Go to Line, Search Next (<code>n</code> / <code>F3</code>), <code>Shift+Arrow</code> selection with copy/paste, automatic indentation, and unsaved-changes warnings.</p>
       </div>
       <div class="feat-card g">
         <span class="feat-icon">🔗</span>
@@ -572,6 +577,9 @@
         <div class="term-ttl">xt — TERMXT SCRIPTING</div>
       </div>
       <div class="term-body">
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">xte main.cs</span></div>
+        <div class="tl"><span class="t-out g">[ xte ] Opened main.cs — C# IntelliSense active</span></div>
+        <div style="height:.3rem;"></div>
         <div class="tl"><span class="t-ps">$</span><span class="t-cmd">xt build.xt -p "Release"</span></div>
         <div class="tl"><span class="t-out g">[ TermXT ] Running build.xt with param: Release</span></div>
         <div style="height:.3rem;"></div>
@@ -712,6 +720,9 @@
       <span class="cmd-b">watch <small>repeat cmd</small></span>
       <span class="cmd-b">bench <small>benchmark</small></span>
       <span class="cmd-b">snap <small>dir snapshot</small></span>
+      <span class="cmd-b">xte <small>code editor</small></span>
+      <span class="cmd-b">xclip <small>copy output</small></span>
+      <span class="cmd-b">ver <small>version info</small></span>
       <span class="cmd-b">xt <small>XT scripts</small></span>
       <span class="cmd-b">chain <small>cmd chains</small></span>
       <span class="cmd-b">ctx <small>save context</small></span>
@@ -769,7 +780,7 @@
       <a href="plimit.html">PLimit</a>
       <a href="https://github.com/0x78654C" target="_blank">GitHub</a>
     </div>
-    <div class="foot-copy">© 2020–2026 x_coding · MIT License · v3.0.0.0</div>
+    <div class="foot-copy">© 2020–2026 x_coding · MIT License · v3.0.1.0</div>
   </footer>
 
 </div><!-- /wrapper -->
