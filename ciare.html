@@ -56,7 +56,7 @@
     <div class="stat-item"><span class="s-num">8+</span><span class="s-lbl">Themes</span></div>
     <div class="stat-item"><span class="s-num">.NET 10</span><span class="s-lbl">Framework</span></div>
     <div class="stat-item"><span class="s-num">MIT</span><span class="s-lbl">License</span></div>
-    <div class="stat-item"><span class="s-num">v3.0.2</span><span class="s-lbl">Version</span></div>
+    <div class="stat-item"><span class="s-num">v3.1.0</span><span class="s-lbl">Version</span></div>
   </div>
 
   <!-- SCREENSHOT HERO -->
@@ -126,12 +126,17 @@
       <div class="feat-card">
         <span class="feat-icon">🔴</span>
         <div class="feat-title">Real-Time Diagnostics</div>
-        <p class="feat-desc">Roslyn-powered wave underlines appear 800ms after you stop typing. Errors and warnings appear in the <strong>Errors tab</strong> with line navigation on double-click. <strong>Right-click any error</strong> to Copy it or send it directly to Ask AI for a fix
+        <p class="feat-desc">Roslyn-powered wave underlines appear 800ms after you stop typing. Errors and warnings are displayed in a <strong>sortable ListView</strong> (click any column header to sort; the Line column sorts numerically). Double-click any entry to jump to that line. <strong>Right-click any error</strong> to Copy it or send it directly to Ask AI for a fix.</p>
       </div>
       <div class="feat-card">
         <span class="feat-icon">💾</span>
         <div class="feat-title">File Management</div>
         <p class="feat-desc">Open, save, save-as, drag &amp; drop files. The title bar shows unsaved changes with an asterisk. Mark a file to auto-open on next launch or Windows startup.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🗂️</span>
+        <div class="feat-title">File Explorer</div>
+        <p class="feat-desc">A built-in file explorer panel with a tree view of your opened folder and a split-container layout. Toggle it with <kbd>Ctrl+E</kbd>. The panel's root path and visibility are persisted in the Windows Registry and automatically restored on next launch.</p>
       </div>
     </div>
   </div>
@@ -162,10 +167,38 @@
 
   <div class="div"></div>
 
-  <!-- COMPILATION & EXECUTION -->
+  <!-- CODE NAVIGATION -->
   <div class="section fade">
     <div class="section-header">
       <div class="section-label">// MODULE 02</div>
+      <h2 class="section-title">Code Navigation</h2>
+      <p class="section-sub">Jump to definitions, find every usage, and explore your codebase without leaving the editor — powered by Roslyn semantic analysis.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <span class="feat-icon">🔗</span>
+        <div class="feat-title">Go to Definition <kbd>Ctrl+Click</kbd></div>
+        <p class="feat-desc">Hold <kbd>Ctrl</kbd> and left-click any identifier to jump directly to its definition. Works for functions, variables, and classes.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔎</span>
+        <div class="feat-title">Find Usages <kbd>Shift+F12</kbd></div>
+        <p class="feat-desc">Place the caret on any identifier and invoke <em>Find Usages</em> from the context menu. CIARE first attempts full Roslyn <strong>semantic analysis</strong> across all <code>.cs</code> files, falling back to a syntax-based search. Results show file path, line, and column for every match.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">↩️</span>
+        <div class="feat-title">Double-Click to Navigate</div>
+        <p class="feat-desc">Double-click any entry in the Find Usages results panel to jump to that exact location in the code instantly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- COMPILATION & EXECUTION -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// MODULE 03</div>
       <h2 class="section-title">Compile &amp; Execute — Instantly</h2>
       <p class="section-sub">Roslyn compiles your code in-memory. Press F5. Done. No project files, no solution setup, no waiting.</p>
     </div>
@@ -216,6 +249,11 @@
         <div class="feat-title">Compiler Options</div>
         <p class="feat-desc">Toggle compiler warnings, allow unsafe code blocks, and configure any compiler switch from the options panel.</p>
       </div>
+      <div class="feat-card">
+        <span class="feat-icon">🎯</span>
+        <div class="feat-title">Smart Build Target Detection</div>
+        <p class="feat-desc">When building, CIARE auto-detects the most appropriate build target. Starting from the active file's directory, it searches upward to find the nearest <code>.sln</code> or <code>.csproj</code> — no manual project configuration needed.</p>
+      </div>
     </div>
   </div>
 
@@ -224,7 +262,7 @@
   <!-- AI INTEGRATION -->
   <div class="section fade">
     <div class="section-header">
-      <div class="section-label">// MODULE 03</div>
+      <div class="section-label">// MODULE 04</div>
       <h2 class="section-title">5× AI Integration</h2>
       <p class="section-sub">Five AI engines. One interface. Ask anything — generate code, fix errors, explain logic — with Ctrl+Shift+P, right-click in the editor, or right-click any error in the Errors tab.</p>
     </div>
@@ -280,7 +318,7 @@
   <!-- LIVE SHARE -->
   <div class="section fade">
     <div class="section-header">
-      <div class="section-label">// MODULE 04</div>
+      <div class="section-label">// MODULE 05</div>
       <h2 class="section-title">Live Share Collaboration</h2>
       <p class="section-sub">Real-time co-editing powered by ASP.NET SignalR. Two developers, one file, zero friction.</p>
     </div>
@@ -326,7 +364,7 @@
   <!-- NUGET -->
   <div class="section fade">
     <div class="section-header">
-      <div class="section-label">// MODULE 05</div>
+      <div class="section-label">// MODULE 06</div>
       <h2 class="section-title">Built-in NuGet Manager</h2>
       <p class="section-sub">Search, download, and reference any package from nuget.org — without leaving the editor. Press Ctrl+R.</p>
     </div>
@@ -371,6 +409,9 @@
       <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>F</kbd></div><span class="short-desc">Find text</span></div>
       <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>H</kbd></div><span class="short-desc">Find and replace</span></div>
       <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Q</kbd></div><span class="short-desc">Live Share management</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>E</kbd></div><span class="short-desc">Show / hide file explorer panel</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Shift</kbd><kbd>F12</kbd></div><span class="short-desc">Find Usages (semantic / syntax search)</span></div>
+      <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Left Click</kbd></div><span class="short-desc">Go to definition</span></div>
       <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>Tab</kbd></div><span class="short-desc">Add new editor tab</span></div>
       <div class="short-row"><div class="key-combo"><kbd>F11</kbd></div><span class="short-desc">Toggle full screen</span></div>
       <div class="short-row"><div class="key-combo"><kbd>Ctrl</kbd><kbd>T</kbd></div><span class="short-desc">Load C# template</span></div>
@@ -431,7 +472,7 @@
       <a href="https://github.com/0x78654C/CIARE" target="_blank">GitHub</a>
       <a href="https://github.com/0x78654C/CIARELiveShareAPI" target="_blank">Live Share API</a>
     </div>
-    <div class="foot-copy">© 2022–2026 x_coding · MIT License · v3.0.2</div>
+    <div class="foot-copy">© 2022–2026 x_coding · MIT License · v3.1.0</div>
   </footer>
 
 </div><!-- /wrapper -->
