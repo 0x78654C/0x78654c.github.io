@@ -40,7 +40,7 @@
     <div class="product-hero-content">
       <div class="hero-label pink">// OFFLINE PASSWORD VAULT</div>
       <div class="hero-name pink">PwM</div>
-      <div class="hero-sub" style="color:#ff6bcb;opacity:.6;">AES-256 · Argon2id · HIBP · .NET 8 · Windows &amp; Linux</div>
+      <div class="hero-sub" style="color:#ff6bcb;opacity:.6;">AES-256 · Argon2id · HIBP · .NET 10 · Windows &amp; Linux</div>
       <p class="hero-desc">
         A fully offline password manager that keeps your credentials under your control.
         Vaults are encrypted with AES-256, master passwords hashed with Argon2id,
@@ -61,7 +61,7 @@
     <div class="stat-item"><span class="s-num pink">15s</span><span class="s-lbl">Clipboard Clear</span></div>
     <div class="stat-item"><span class="s-num pink">10 min</span><span class="s-lbl">Session Expiry</span></div>
     <div class="stat-item"><span class="s-num pink">Win+Lin</span><span class="s-lbl">Platform</span></div>
-    <div class="stat-item"><span class="s-num pink">.NET 8</span><span class="s-lbl">Framework</span></div>
+    <div class="stat-item"><span class="s-num pink">.NET 10</span><span class="s-lbl">Framework</span></div>
   </div>
 
   <!-- SCREENSHOT GALLERY -->
@@ -74,19 +74,19 @@
     <div class="shots-grid">
       <div class="shot p shot-ix" onclick="openLightbox(this)">
         <div class="zoom-badge">⤢ EXPAND</div>
-        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/1.jpg" alt="PwM Main Window"
+        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/1.png" alt="PwM Main Window"
              onerror="this.parentElement.style.display='none'">
         <div class="shot-caption">Main vault window</div>
       </div>
       <div class="shot p shot-ix" onclick="openLightbox(this)">
         <div class="zoom-badge">⤢ EXPAND</div>
-        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/2.jpg" alt="PwM Account View"
+        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/2.png" alt="PwM Account View"
              onerror="this.parentElement.style.display='none'">
         <div class="shot-caption">Account management</div>
       </div>
       <div class="shot p shot-ix" onclick="openLightbox(this)">
         <div class="zoom-badge">⤢ EXPAND</div>
-        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/1v.jpg" alt="PwM Vertical"
+        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/1v.png" alt="PwM Vertical"
              onerror="this.parentElement.style.display='none'">
         <div class="shot-caption">Password entry detail</div>
       </div>
@@ -200,20 +200,20 @@
         <div class="term-ttl">PwM CLI — INTERACTIVE SESSION</div>
       </div>
       <div class="term-body">
-        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -createv</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">pwm_cli -createv</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Vault Name:</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out pk">&gt; work</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Master Password: ••••••••••••</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Confirm Master Password: ••••••••••••</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out pk">[+] Vault work was created!</span></div>
-        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -addapp</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">pwm_cli -addapp</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter vault name: <span class="t-out pk">work</span></span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter master password for work vault: ••••••••••••</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter application name: <span class="t-out pk">GitHub</span></span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter account name for GitHub: <span class="t-out pk">dev@example.com</span></span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter password for dev@example.com: ••••••••••••</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out pk">[+] Data for GitHub is encrypted and added to vault!</span></div>
-        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -lista</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">pwm_cli -lista</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter vault name: <span class="t-out pk">work</span></span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter master password for work vault: ••••••••••••</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter application name (or "all"): <span class="t-out pk">GitHub</span></span></div>
@@ -239,7 +239,7 @@
       <div class="feat-card p fade">
         <span class="feat-icon">🐧</span>
         <div class="feat-title">Linux Native</div>
-        <p class="feat-desc">PwM_CLI targets .NET 8 and runs natively on Linux. Ideal for servers, DevOps pipelines, and headless environments.</p>
+        <p class="feat-desc">PwM_CLI targets .NET 10 and runs natively on Linux. Ideal for servers, DevOps pipelines, and headless environments.</p>
       </div>
       <div class="feat-card p fade">
         <span class="feat-icon">⚙️</span>
@@ -270,7 +270,7 @@
         <div class="term-ttl">PwM CLI — ALL COMMANDS</div>
       </div>
       <div class="term-body">
-        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -h</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">pwm_cli -h</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out pk">PwM - Password Manager  Copyright @ 2020-2026 0x078654c</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">&nbsp;</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out pk">[x] Usage of Password Manager commands:</span></div>
@@ -283,14 +283,14 @@
         <div class="tl"><span class="t-ps"> </span><span class="t-out">  -updatea  Update account password in vault</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">  -lista    Display existing applications in vault</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">&nbsp;</span></div>
-        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -listv</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">pwm_cli -listv</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">List of current vaults:</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">----------------</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out pk">work</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">----------------</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out pk">personal</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">----------------</span></div>
-        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">PwM -updatea</span></div>
+        <div class="tl"><span class="t-ps">$</span><span class="t-cmd">pwm_cli -updatea</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter vault name: <span class="t-out pk">work</span></span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter master password for work vault: ••••••••••••</span></div>
         <div class="tl"><span class="t-ps"> </span><span class="t-out">Enter application name: <span class="t-out pk">GitHub</span></span></div>
@@ -310,7 +310,7 @@
       <h2 class="section-title">Built On</h2>
     </div>
     <div class="tech-cloud">
-      <span class="tech-badge">.NET 8</span>
+      <span class="tech-badge">.NET 10</span>
       <span class="tech-badge">WPF (Windows GUI)</span>
       <span class="tech-badge">Windows Forms</span>
       <span class="tech-badge">.NET Standard 2.1 (Lib)</span>
@@ -319,7 +319,7 @@
       <span class="tech-badge">Have I Been Pwned API</span>
       <span class="tech-badge">MaterialDesignThemes</span>
       <span class="tech-badge">Gu.Wpf.Adorners</span>
-      <span class="tech-badge">Windows 7.0+ (WPF)</span>
+      <span class="tech-badge">Windows 10+ (WPF)</span>
       <span class="tech-badge">Linux (CLI)</span>
       <span class="tech-badge">MIT License</span>
     </div>
@@ -331,7 +331,7 @@
       <div class="section-label">// GET STARTED</div>
       <h2 class="section-title">Download PwM</h2>
     </div>
-    <p class="section-sub" style="margin-bottom:2.5rem;">Open source, MIT licensed. Download from GitHub. .NET 8 Runtime required.</p>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Open source, MIT licensed. Download from GitHub. .NET 10 Runtime required.</p>
     <div class="btn-group" style="justify-content:center;">
       <a href="https://github.com/0x78654C/PwM" target="_blank" class="btn pink">View on GitHub →</a>
       <a href="https://github.com/0x78654C/PwM/releases" target="_blank" class="btn ghost pink">Releases ↗</a>
@@ -348,7 +348,7 @@
       <a href="plimit.html">PLimit</a>
       <a href="https://github.com/0x78654C/PwM" target="_blank">GitHub</a>
     </div>
-    <div class="foot-copy">© 2022–2026 x_coding · MIT License · .NET 8</div>
+    <div class="foot-copy">© 2022–2026 x_coding · MIT License · .NET 10</div>
   </footer>
 
 </div><!-- /wrapper -->
