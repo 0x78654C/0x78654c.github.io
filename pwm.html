@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PwM — Offline Password Manager</title>
+  <title>PwM v1.2.1 — Offline Password Manager</title>
   <link rel="stylesheet" href="style.css">
   <style>
     body { --lb-rgb: 255,107,203; }
@@ -15,6 +15,7 @@
     .short-row:hover { border-color: rgba(255,107,203,.18); }
     kbd { background: rgba(255,107,203,.08); border-color: rgba(255,107,203,.3); color: #ff6bcb; }
     .div { background: linear-gradient(90deg,transparent,rgba(255,107,203,.25),transparent); }
+    .shots-grid .shot img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
   </style>
 </head>
 <body>
@@ -38,17 +39,16 @@
   <div class="product-hero">
     <div class="hero-glow pink"></div>
     <div class="product-hero-content">
-      <div class="hero-label pink">// OFFLINE PASSWORD VAULT</div>
+      <div class="hero-label pink">// LATEST RELEASE · V1.2.1</div>
       <div class="hero-name pink">PwM</div>
-      <div class="hero-sub" style="color:#ff6bcb;opacity:.6;">AES-256 · Argon2id · HIBP · .NET 10 · Windows &amp; Linux</div>
+      <div class="hero-sub" style="color:#ff6bcb;opacity:.6;">AES-256 · Argon2id · .NET 10 · Windows · Android · iOS · Linux CLI</div>
       <p class="hero-desc">
-        A fully offline password manager that keeps your credentials under your control.
-        Vaults are encrypted with AES-256, master passwords hashed with Argon2id,
-        and every new entry is checked against the Have I Been Pwned breach database —
-        without ever sending your passwords to any server.
+        A fully offline password manager for desktop, mobile, and the command line.
+        PwM v1.2.1 brings the same encrypted <code>.x</code> vaults to Android and iOS,
+        adds a dark theme to Windows, and refreshes the interface across platforms.
       </p>
       <div class="btn-group">
-        <a href="https://github.com/0x78654C/PwM" target="_blank" class="btn pink">GitHub →</a>
+        <a href="https://github.com/0x78654C/PwM/releases/tag/v1.2.1" target="_blank" class="btn pink">Download v1.2.1 →</a>
         <a href="#features" class="btn ghost pink">Explore Features ↓</a>
       </div>
     </div>
@@ -58,37 +58,86 @@
   <div class="stat-bar pink fade">
     <div class="stat-item"><span class="s-num pink">AES-256</span><span class="s-lbl">Encryption</span></div>
     <div class="stat-item"><span class="s-num pink">Argon2id</span><span class="s-lbl">Master Hash</span></div>
+    <div class="stat-item"><span class="s-num pink">v1.2.1</span><span class="s-lbl">Latest Release</span></div>
     <div class="stat-item"><span class="s-num pink">15s</span><span class="s-lbl">Clipboard Clear</span></div>
     <div class="stat-item"><span class="s-num pink">10 min</span><span class="s-lbl">Session Expiry</span></div>
-    <div class="stat-item"><span class="s-num pink">Win+Lin</span><span class="s-lbl">Platform</span></div>
-    <div class="stat-item"><span class="s-num pink">.NET 10</span><span class="s-lbl">Framework</span></div>
+    <div class="stat-item"><span class="s-num pink">4</span><span class="s-lbl">Platforms</span></div>
   </div>
 
   <!-- SCREENSHOT GALLERY -->
   <div class="section fade" id="features">
     <div class="section-header">
       <div class="section-label">// INTERFACE</div>
-      <h2 class="section-title">Clean &amp; Secure by Design</h2>
-      <p class="section-sub">Material Design UI on Windows. Minimal CLI on Linux. Same encrypted vault, any platform.</p>
+      <h2 class="section-title">Desktop &amp; Mobile by Design</h2>
+      <p class="section-sub">Refreshed Windows desktop and .NET MAUI mobile interfaces. Same encrypted vault, any platform.</p>
     </div>
     <div class="shots-grid">
       <div class="shot p shot-ix" onclick="openLightbox(this)">
         <div class="zoom-badge">⤢ EXPAND</div>
-        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/1.png" alt="PwM Main Window"
+        <img src="https://raw.githubusercontent.com/0x78654C/PwM/v1.2.1/Media/1.png" alt="PwM Create Vault in Dark Theme"
              onerror="this.parentElement.style.display='none'">
-        <div class="shot-caption">Main vault window</div>
+        <div class="shot-caption">Create vault in desktop dark theme</div>
       </div>
       <div class="shot p shot-ix" onclick="openLightbox(this)">
         <div class="zoom-badge">⤢ EXPAND</div>
-        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/2.png" alt="PwM Account View"
+        <img src="https://raw.githubusercontent.com/0x78654C/PwM/v1.2.1/Media/settings_dark.png" alt="PwM Desktop Dark Theme Settings"
              onerror="this.parentElement.style.display='none'">
-        <div class="shot-caption">Account management</div>
+        <div class="shot-caption">Desktop appearance and security settings</div>
       </div>
       <div class="shot p shot-ix" onclick="openLightbox(this)">
         <div class="zoom-badge">⤢ EXPAND</div>
-        <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/1v.png" alt="PwM Vertical"
+        <img src="https://raw.githubusercontent.com/0x78654C/PwM/v1.2.1/Media/mobile_main.png" alt="PwM Mobile Vault List"
              onerror="this.parentElement.style.display='none'">
-        <div class="shot-caption">Password entry detail</div>
+        <div class="shot-caption">Mobile vault management</div>
+      </div>
+      <div class="shot p shot-ix" onclick="openLightbox(this)">
+        <div class="zoom-badge">⤢ EXPAND</div>
+        <img src="https://raw.githubusercontent.com/0x78654C/PwM/v1.2.1/Media/mobile_apps.png" alt="PwM Mobile Credentials List"
+             onerror="this.parentElement.style.display='none'">
+        <div class="shot-caption">Mobile credential search and management</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div fade"></div>
+
+  <!-- LATEST RELEASE -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label">// NEW IN V1.2.1 · JUNE 8, 2026</div>
+      <h2 class="section-title">Your Vaults Go Mobile</h2>
+      <p class="section-sub">PwM v1.2.1 expands the offline vault experience to Android and iOS while refreshing the Windows desktop app.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card p fade">
+        <span class="feat-icon">📱</span>
+        <div class="feat-title">New Mobile App</div>
+        <p class="feat-desc">A new .NET MAUI app brings local vault and credential management to Android 8.0+ and iOS 15.0+.</p>
+        <ul class="feat-list p">
+          <li>Create, import, export, and delete vaults</li>
+          <li>Add, search, update, show, copy, and delete credentials</li>
+          <li>System, Light, and Dark appearance options</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">↔️</span>
+        <div class="feat-title">Portable Encrypted Vaults</div>
+        <p class="feat-desc">Move the same encrypted <code>.x</code> vault files between desktop and mobile without converting your data.</p>
+        <ul class="feat-list p">
+          <li>Same vault format and encryption library</li>
+          <li>Local vaults supported across desktop, mobile, and CLI</li>
+          <li>Shared network vaults remain Windows desktop only</li>
+        </ul>
+      </div>
+      <div class="feat-card p fade">
+        <span class="feat-icon">🌗</span>
+        <div class="feat-title">Desktop Dark Theme</div>
+        <p class="feat-desc">The Windows desktop app now includes Light and Dark appearance options plus refreshed vault, credential, settings, and dialog designs.</p>
+        <ul class="feat-list p">
+          <li>New dark appearance</li>
+          <li>Updated icons and visual consistency</li>
+          <li>Refreshed settings and dialogs</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -136,11 +185,11 @@
       <div class="feat-card p fade">
         <span class="feat-icon">🔑</span>
         <div class="feat-title">Account Management</div>
-        <p class="feat-desc">Organise credentials by application. Add, update, delete, and search accounts within any vault.</p>
+        <p class="feat-desc">Organise credentials by application. Add, update, delete, search, and generate strong passwords within any vault.</p>
         <ul class="feat-list p">
           <li>Add / update / delete accounts</li>
           <li>Change master password anytime</li>
-          <li>Show password toggle (eye icon)</li>
+          <li>Built-in strong password generator</li>
         </ul>
       </div>
       <div class="feat-card p fade">
@@ -179,7 +228,7 @@
       <div class="feat-card p fade">
         <span class="feat-icon">🛡️</span>
         <div class="feat-title">Argon2id Hashing</div>
-        <p class="feat-desc">Your master password is never stored. It's hashed using Argon2id — the winner of the Password Hashing Competition — making brute-force attacks computationally infeasible.</p>
+        <p class="feat-desc">Your master password is never stored. Argon2id iterations, memory size, and parallelism are configurable in Settings to tune key derivation strength.</p>
       </div>
       <div class="feat-card p fade">
         <span class="feat-icon">🌐</span>
@@ -259,7 +308,7 @@
       <div class="feat-card p fade">
         <span class="feat-icon">📦</span>
         <div class="feat-title">Cross-Platform Vault</div>
-        <p class="feat-desc">Vault <code>.x</code> files created on Windows GUI can be opened with the Linux CLI and vice versa — same encryption, fully portable.</p>
+        <p class="feat-desc">Local <code>.x</code> vaults use the same format and encryption across Windows desktop, Android, iOS, and the Windows/Linux CLI.</p>
       </div>
     </div>
 
@@ -312,6 +361,7 @@
     <div class="tech-cloud">
       <span class="tech-badge">.NET 10</span>
       <span class="tech-badge">WPF (Windows GUI)</span>
+      <span class="tech-badge">.NET MAUI (Mobile)</span>
       <span class="tech-badge">Windows Forms</span>
       <span class="tech-badge">.NET Standard 2.1 (Lib)</span>
       <span class="tech-badge">AES-256 / Rijndael</span>
@@ -320,6 +370,8 @@
       <span class="tech-badge">MaterialDesignThemes</span>
       <span class="tech-badge">Gu.Wpf.Adorners</span>
       <span class="tech-badge">Windows 10+ (WPF)</span>
+      <span class="tech-badge">Android 8.0+</span>
+      <span class="tech-badge">iOS 15.0+</span>
       <span class="tech-badge">Linux (CLI)</span>
       <span class="tech-badge">MIT License</span>
     </div>
@@ -329,12 +381,13 @@
   <div class="section-full fade" style="text-align:center;padding-bottom:6rem;">
     <div class="section-header">
       <div class="section-label">// GET STARTED</div>
-      <h2 class="section-title">Download PwM</h2>
+      <h2 class="section-title">Download PwM v1.2.1</h2>
     </div>
-    <p class="section-sub" style="margin-bottom:2.5rem;">Open source, MIT licensed. Download from GitHub. .NET 10 Runtime required.</p>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Released June 8, 2026. Open source, MIT licensed, and built on .NET 10.</p>
     <div class="btn-group" style="justify-content:center;">
-      <a href="https://github.com/0x78654C/PwM" target="_blank" class="btn pink">View on GitHub →</a>
-      <a href="https://github.com/0x78654C/PwM/releases" target="_blank" class="btn ghost pink">Releases ↗</a>
+      <a href="https://github.com/0x78654C/PwM/releases/download/v1.2.1/PwM-v1.2.1_x64_R2R.zip" target="_blank" class="btn pink">Windows x64 →</a>
+      <a href="https://github.com/0x78654C/PwM/releases/download/v1.2.1/PwM_1.0.0_Andorid-Signed.apk" target="_blank" class="btn ghost pink">Android APK →</a>
+      <a href="https://github.com/0x78654C/PwM/releases/tag/v1.2.1" target="_blank" class="btn ghost pink">Release Notes ↗</a>
     </div>
   </div>
 
