@@ -15,6 +15,9 @@
     .short-row:hover { border-color: rgba(255,107,203,.18); }
     kbd { background: rgba(255,107,203,.08); border-color: rgba(255,107,203,.3); color: #ff6bcb; }
     .div { background: linear-gradient(90deg,transparent,rgba(255,107,203,.25),transparent); }
+    .pwm-logo-row { text-align: center; padding: 0 0 2rem; }
+    .pwm-hero-logo { height: 80px; object-fit: contain; filter: drop-shadow(0 0 28px #ff6bcb) drop-shadow(0 0 8px #ff6bcb); }
+    #features { max-width: 1520px; }
     .shots-grid .shot img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
   </style>
 </head>
@@ -70,6 +73,10 @@
       <div class="section-label">// INTERFACE</div>
       <h2 class="section-title">Desktop &amp; Mobile by Design</h2>
       <p class="section-sub">Refreshed Windows desktop and .NET MAUI mobile interfaces. Same encrypted vault, any platform.</p>
+    </div>
+    <div class="pwm-logo-row">
+      <img src="https://raw.githubusercontent.com/0x78654C/PwM/main/Media/logo.png" alt="PwM"
+           class="pwm-hero-logo" onerror="this.style.display='none'">
     </div>
     <div class="shots-grid">
       <div class="shot p shot-ix" onclick="openLightbox(this)">
