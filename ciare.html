@@ -56,7 +56,7 @@
     <div class="stat-item"><span class="s-num">8+</span><span class="s-lbl">Themes</span></div>
     <div class="stat-item"><span class="s-num">.NET 10</span><span class="s-lbl">Framework</span></div>
     <div class="stat-item"><span class="s-num">MIT</span><span class="s-lbl">License</span></div>
-    <div class="stat-item"><span class="s-num">v3.2.3</span><span class="s-lbl">Version</span></div>
+    <div class="stat-item"><span class="s-num">v3.2.4</span><span class="s-lbl">Version</span></div>
   </div>
 
   <!-- SCREENSHOT HERO -->
@@ -87,7 +87,7 @@
       <div class="feat-card">
         <span class="feat-icon">⚡</span>
         <div class="feat-title">IntelliSense Completion</div>
-        <p class="feat-desc">Context-aware code suggestions powered by NRefactory and SharpDevelop Dom — type less, ship more.
+        <p class="feat-desc">Context-aware code suggestions powered by NRefactory and SharpDevelop Dom — type less, ship more. Framework completion members load on demand and are retained for reuse, reducing memory held by unused types.</p>
       </div>
       <div class="feat-card">
         <span class="feat-icon">🎨</span>
@@ -116,7 +116,7 @@
       <div class="feat-card">
         <span class="feat-icon">📑</span>
         <div class="feat-title">Multi-Tab Editing</div>
-        <p class="feat-desc">Open multiple files in tabs. Add new tabs with Ctrl+Tab, navigate left/right, and close any tab independently or all at once.</p>
+        <p class="feat-desc">Open multiple files in tabs. Add new tabs with Ctrl+Tab, navigate left/right, and close any tab independently or all at once. Smooth startup, restored tabs, and tab switching keep your workspace responsive with minimal flicker.</p>
       </div>
       <div class="feat-card">
         <span class="feat-icon">🌓</span>
@@ -137,6 +137,16 @@
         <span class="feat-icon">🗂️</span>
         <div class="feat-title">File Explorer</div>
         <p class="feat-desc">A built-in file explorer panel with a tree view of your opened folder and a split-container layout. Toggle it with <kbd>Ctrl+E</kbd>. The panel's root path and visibility are persisted in the Windows Registry and automatically restored on next launch.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">⚡</span>
+        <div class="feat-title">Efficient Code Analysis</div>
+        <p class="feat-desc">Reuses unchanged project data and shared references to reduce repeated text processing, memory use, and idle CPU work. Obsolete analysis requests are cancelled so older diagnostic results cannot replace newer errors and warnings.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔄</span>
+        <div class="feat-title">Automatic Updates</div>
+        <p class="feat-desc">Checks for stable releases after startup or via <strong>Help → Check for updates…</strong>. With your approval, the bundled installer downloads and verifies the matching x64 or x86 ZIP. Save open work before closing; replaced files are backed up, rollback is attempted on errors, and CIARE restarts after success.</p>
       </div>
     </div>
   </div>
@@ -253,6 +263,11 @@
         <span class="feat-icon">🎯</span>
         <div class="feat-title">Smart Build Target Detection</div>
         <p class="feat-desc">When building, CIARE auto-detects the most appropriate build target. Starting from the active file's directory, it searches upward to find the nearest <code>.sln</code> or <code>.csproj</code> — no manual project configuration needed.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🛠️</span>
+        <div class="feat-title">Build Project</div>
+        <p class="feat-desc">Right-click a <code>.csproj</code> or its folder in Project Explorer to build that project with the current configuration and platform. Pending project edits are saved and results appear in Output while the editor stays responsive. Referenced projects are not rebuilt; their required outputs must already exist.</p>
       </div>
     </div>
   </div>
@@ -454,10 +469,13 @@
   <div class="section fade" style="text-align:center;padding-bottom:6rem;">
     <div class="hero-badge" style="margin-bottom:1.5rem;">// OPEN SOURCE · MIT LICENSE</div>
     <h2 class="section-title">Ready to Run C# Instantly?</h2>
-    <p class="section-sub" style="margin-bottom:2.5rem;">Download CIARE from GitHub. .NET 10 SDK required. Windows 10+ supported.</p>
+    <p class="section-sub" style="margin-bottom:1rem;">Download CIARE v3.2.4. .NET 10 SDK required. Windows 10+ supported.</p>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Upgrading from a version without the updater? Extract the complete ZIP for your architecture into a writable installation folder once. Future updates use the built-in updater.</p>
     <div class="btn-group" style="justify-content:center;">
       <a href="https://github.com/0x78654C/CIARE" target="_blank" class="btn">View on GitHub →</a>
-      <a href="https://github.com/0x78654C/CIARE/releases" target="_blank" class="btn ghost">Download Releases</a>
+      <a href="https://github.com/0x78654C/CIARE/releases/download/v3.2.4/CIARE_v3.2.4-x64.zip" target="_blank" class="btn ghost">Download x64 ZIP ↓</a>
+      <a href="https://github.com/0x78654C/CIARE/releases/download/v3.2.4/CIARE_v3.2.4-x86.zip" target="_blank" class="btn ghost">Download x86 ZIP ↓</a>
+      <a href="https://github.com/0x78654C/CIARE/releases/tag/v3.2.4" target="_blank" class="btn ghost">v3.2.4 Release Notes ↗</a>
     </div>
   </div>
  
@@ -472,7 +490,7 @@
       <a href="https://github.com/0x78654C/CIARE" target="_blank">GitHub</a>
       <a href="https://github.com/0x78654C/CIARELiveShareAPI" target="_blank">Live Share API</a>
     </div>
-    <div class="foot-copy">© 2022–2026 x_coding · MIT License · v3.2.3</div>
+    <div class="foot-copy">© 2022–2026 x_coding · MIT License · v3.2.4</div>
   </footer>
 
 </div><!-- /wrapper -->

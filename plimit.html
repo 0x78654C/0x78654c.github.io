@@ -61,12 +61,12 @@
 
   <!-- STAT BAR -->
   <div class="stat-bar orange fade">
-    <div class="stat-item"><span class="s-num orange">5</span><span class="s-lbl">CPU Priority Levels</span></div>
+    <div class="stat-item"><span class="s-num orange">6</span><span class="s-lbl">CPU Priority Levels</span></div>
     <div class="stat-item"><span class="s-num orange">4</span><span class="s-lbl">I/O Priority Levels</span></div>
     <div class="stat-item"><span class="s-num orange">Real-Time</span><span class="s-lbl">CPU/RAM Monitor</span></div>
     <div class="stat-item"><span class="s-num orange">EcoQoS</span><span class="s-lbl">Efficiency Mode</span></div>
     <div class="stat-item"><span class="s-num orange">JSON</span><span class="s-lbl">Persistent Settings</span></div>
-    <div class="stat-item"><span class="s-num orange">Win 10+</span><span class="s-lbl">Compatible</span></div>
+    <div class="stat-item"><span class="s-num orange">v1.0.3</span><span class="s-lbl">Version</span></div>
   </div>
 
   <!-- SCREENSHOT -->
@@ -127,6 +127,7 @@
           <li><strong style="color:#febc2e;">Above Normal</strong> — slightly elevated</li>
           <li><strong style="color:#c8c8e8;">Normal</strong> — default Windows priority</li>
           <li><strong style="color:#6666aa;">Below Normal</strong> — deprioritised</li>
+          <li><strong style="color:#6666aa;">Idle</strong> — lowest priority for background tasks</li>
         </ul>
       </div>
       <div class="feat-card o fade">
@@ -145,7 +146,7 @@
         <div class="feat-title">CPU Affinity</div>
         <p class="feat-desc">Pin a process to specific CPU cores. Isolate latency-sensitive apps to dedicated cores, or prevent a rogue process from consuming your entire CPU.</p>
         <ul class="feat-list o">
-          <li>Per-core checkbox selection</li>
+          <li>Per-core checkbox selection with keyboard access</li>
           <li>At least one core always enabled</li>
           <li>Works with any number of cores</li>
         </ul>
@@ -176,6 +177,7 @@
         <p class="feat-desc">Toggle Windows 11 Efficiency Mode on any process. Lowers CPU usage, reduces heat, and extends battery life for background applications.</p>
         <ul class="feat-list o">
           <li>Uses Windows EcoQoS API</li>
+          <li>Detects the current efficiency-mode state</li>
           <li>Perfect for browser helpers, updaters</li>
           <li>Reduces power draw without killing the process</li>
         </ul>
@@ -190,7 +192,7 @@
     <div class="section-header">
       <div class="section-label">// SYSTEM MONITOR</div>
       <h2 class="section-title">Live CPU &amp; RAM Dashboard</h2>
-      <p class="section-sub">Real-time per-core CPU usage bars and RAM consumption, updated continuously.</p>
+      <p class="section-sub">Real-time per-core CPU usage bars and RAM consumption, updated continuously. Refreshes preserve open menus so you can adjust process settings without interruption.</p>
     </div>
     <div class="term-win orange" style="max-width:850px;margin:0 auto;">
       <div class="term-header">
@@ -228,17 +230,17 @@
       <div class="feat-card o fade">
         <span class="feat-icon">💾</span>
         <div class="feat-title">JSON Settings</div>
-        <p class="feat-desc">All process settings — priority, affinity, boost, efficiency, I/O — are serialized to <code>Settings/processes.json</code> next to the executable.</p>
+        <p class="feat-desc">All process settings — priority, affinity, boost, efficiency, I/O — are serialized to <code>Settings/processes.json</code> next to the executable. Protected writes reduce file-corruption risks, and save errors are handled gracefully.</p>
       </div>
       <div class="feat-card o fade">
         <span class="feat-icon">🔄</span>
         <div class="feat-title">Auto-Apply on Startup</div>
-        <p class="feat-desc">PLimit reads your saved profile at launch and reapplies all settings to matching processes automatically. Set it once, forget it.</p>
+        <p class="feat-desc">PLimit reads your saved profile at launch and reapplies all settings, including Idle priority, to matching processes automatically. Set it once, forget it.</p>
       </div>
       <div class="feat-card o fade">
         <span class="feat-icon">🔍</span>
         <div class="feat-title">Live Process Search</div>
-        <p class="feat-desc">Search by process name or PID from the real-time process list. Live count display shows how many processes are running.</p>
+        <p class="feat-desc">Filter the real-time process list by a full or partial process name or PID, with correct handling when no processes match. Live count display shows how many processes are running.</p>
       </div>
       <div class="feat-card o fade">
         <span class="feat-icon">🔒</span>
@@ -267,7 +269,7 @@
       <h2 class="section-title">Built On</h2>
     </div>
     <div class="tech-cloud">
-      <span class="tech-badge">.NET 8</span>
+      <span class="tech-badge">.NET 10</span>
       <span class="tech-badge">Windows Forms</span>
       <span class="tech-badge">P/Invoke (kernel32 / ntdll / advapi32)</span>
       <span class="tech-badge">EcoQoS API</span>
@@ -283,12 +285,13 @@
   <div class="section-full fade" style="text-align:center;padding-bottom:6rem;">
     <div class="section-header">
       <div class="section-label">// GET STARTED</div>
-      <h2 class="section-title">Download PLimit</h2>
+      <h2 class="section-title">Download PLimit v1.0.3</h2>
     </div>
     <p class="section-sub" style="margin-bottom:2.5rem;">Open source, MIT licensed. Download from GitHub. .NET 10 Runtime required. Windows 10+ only.</p>
     <div class="btn-group" style="justify-content:center;">
       <a href="https://github.com/0x78654C/PLimit" target="_blank" class="btn orange">View on GitHub →</a>
-      <a href="https://github.com/0x78654C/PLimit/releases" target="_blank" class="btn ghost orange">Releases ↗</a>
+      <a href="https://github.com/0x78654C/PLimit/releases/download/v1.0.3/PLimit_v1.0.3_R2R_win-x64.zip" target="_blank" class="btn ghost orange">Download Windows x64 ZIP ↓</a>
+      <a href="https://github.com/0x78654C/PLimit/releases/tag/v1.0.3" target="_blank" class="btn ghost orange">v1.0.3 Release Notes ↗</a>
     </div>
   </div>
 
@@ -302,7 +305,7 @@
       <a href="pwm.html">PwM</a>
       <a href="https://github.com/0x78654C/PLimit" target="_blank">GitHub</a>
     </div>
-    <div class="foot-copy">© 2024–2026 x_coding · MIT License · .NET 10</div>
+    <div class="foot-copy">© 2024–2026 x_coding · MIT License · .NET 10 · v1.0.3</div>
   </footer>
 
 </div><!-- /wrapper -->
