@@ -28,7 +28,7 @@
       <li><a href="xterminal.html" class="active green-link">xTerminal</a></li>
       <li><a href="pwm.html" class="pink-link">PwM</a></li>
       <li><a href="plimit.html" class="orange-link">PLimit</a></li>
-      <li><a href="https://github.com/0x78654C" target="_blank">GitHub ↗</a></li>
+      <li><a href="https://github.com/0x78654C/xTerminal" target="_blank">GitHub ↗</a></li>
     </ul>
   </nav>
 
@@ -43,7 +43,7 @@
         A powerful shell that brings <strong style="color:#00ff41">Linux/Bash-style</strong> commands to Windows.
         Built as an intelligent layer over PowerShell and CMD — with a built-in AI assistant,
         C# code runner, encrypted password manager, interactive process monitor, port scanner,
-        firewall manager, and much more.
+        firewall manager, automatic updates, and much more.
       </p>
       <div class="btn-group">
         <a href="https://github.com/0x78654C/xTerminal" target="_blank" class="btn green">GitHub Repository →</a>
@@ -639,6 +639,40 @@
 
   <div class="div green"></div>
 
+  <!-- AUTOMATIC UPDATES -->
+  <div class="section fade">
+    <div class="section-header">
+      <div class="section-label green">// MODULE 10 · NEW IN v3.0.7.0</div>
+      <h2 class="section-title">Automatic Updates</h2>
+      <p class="section-sub">Keep xTerminal up to date with built-in release checks, verified downloads, and a dedicated updater.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card g">
+        <span class="feat-icon">🔄</span>
+        <div class="feat-title green">xUpdater — Automatic Updater</div>
+        <p class="feat-desc">Compare your installed version with the latest release and confirm before an update begins. The dedicated <code>xUpdater</code> application downloads and installs the update, then restarts xTerminal in the correct working directory.</p>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">⚙️</span>
+        <div class="feat-title green">xup — Update Controls</div>
+        <p class="feat-desc">Manage update checks directly from the terminal. Choose whether to check when an interactive session starts, or check for a new release immediately.</p>
+        <ul class="feat-list g">
+          <li><code>xup -e</code> — Enable startup checks</li>
+          <li><code>xup -d</code> — Disable startup checks</li>
+          <li><code>xup -s</code> — Show startup check status</li>
+          <li><code>xup -c</code> — Check for updates now</li>
+        </ul>
+      </div>
+      <div class="feat-card g">
+        <span class="feat-icon">✅</span>
+        <div class="feat-title green">Verified Downloads</div>
+        <p class="feat-desc">Automatically selects the release package for your Windows architecture (<code>x64</code> or <code>x86</code>). Downloads are verified with SHA-256 before extraction, and packages are checked for the expected <code>xTerminal.exe</code> before installation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="div green"></div>
+
   <!-- COMMAND REFERENCE -->
   <div class="section fade">
     <div class="section-header">
@@ -728,6 +762,7 @@
       <span class="cmd-b">xte <small>code editor</small></span>
       <span class="cmd-b">xclip <small>copy output</small></span>
       <span class="cmd-b">ver <small>version info</small></span>
+      <span class="cmd-b">xup <small>update checks</small></span>
       <span class="cmd-b">xt <small>XT scripts</small></span>
       <span class="cmd-b">chain <small>cmd chains</small></span>
       <span class="cmd-b">ctx <small>save context</small></span>
@@ -771,7 +806,8 @@
     <h2 class="section-title">Ready to Upgrade Your Terminal?</h2>
     <p class="section-sub" style="margin-bottom:2.5rem;">Download xTerminal from GitHub. .NET 10 required. Works on Windows 10 and above.</p>
     <div class="btn-group" style="justify-content:center;">
-      <a href="https://github.com/0x78654C" target="_blank" class="btn green">View on GitHub →</a>
+      <a href="https://github.com/0x78654C/xTerminal" target="_blank" class="btn green">View on GitHub →</a>
+      <a href="https://github.com/0x78654C/xTerminal/releases/tag/v3.0.7.0" target="_blank" class="btn ghost">Download v3.0.7.0 ↗</a>
       <a href="ciare.html" class="btn ghost">Try CIARE Editor</a>
     </div>
   </div>
